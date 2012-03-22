@@ -1,6 +1,11 @@
 package view;
 
-public class TopPanel
-{
+import javax.swing.JPanel;
 
+public class TopPanel extends JPanel
+{
+    public TopPanel()
+    {
+        super();
+    }
 }

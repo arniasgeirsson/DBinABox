@@ -31,6 +31,8 @@ public class MainFrame extends JFrame
     
     public void goFromLogin()
     {
+        this.createMainFramePanels();
+        
         this.insets = this.getInsets();
         this.setSize(FRAME_PREF_WIDTH+this.insets.right+this.insets.left, 
                 FRAME_PREF_HEIGHT+this.insets.top+this.insets.bottom);
@@ -47,5 +49,10 @@ public class MainFrame extends JFrame
         this.getContentPane().add(new LoginPanel());
         this.validate();
         this.repaint();
+    }
+    
+    private void createMainFramePanels()
+    {
+        
     }
 }

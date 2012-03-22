@@ -1,6 +1,11 @@
 package view;
 
-public class DatabasePanel 
-{
+import javax.swing.JPanel;
 
+public class DatabasePanel extends JPanel
+{
+    public DatabasePanel()
+    {
+        super();
+    }
 }

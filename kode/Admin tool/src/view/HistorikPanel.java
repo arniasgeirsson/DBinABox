@@ -2,9 +2,9 @@ package view;
 
 import javax.swing.JPanel;
 
-public class TablePanel extends JPanel
+public class HistorikPanel extends JPanel
 {
-    public TablePanel()
+    public HistorikPanel()
     {
         super();
     }
