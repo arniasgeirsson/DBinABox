@@ -14,6 +14,9 @@ public class LoginPanel extends JPanel
     private JTextField username;
     private JTextField password;
 
+    /**
+     * Creates a new loginPanel
+     */
     public LoginPanel()
     {
         super();

@@ -15,6 +15,9 @@ public class TopPanel extends JPanel
     private JButton plusButton;
     private ArrayList<PaneButton> allPaneButtons;
     
+    /**
+     * Creates a new topPanel.
+     */
     public TopPanel()
     {
         super();
@@ -34,6 +37,9 @@ public class TopPanel extends JPanel
         this.addAllPanes();
     }
     
+    /**
+     * Adds all the created panes to the topPanel
+     */
     public void addAllPanes()
     {
         this.remove(this.plusButton);
@@ -44,8 +50,12 @@ public class TopPanel extends JPanel
         this.add(this.plusButton);
     }
     
-    public void addPane(String text)
+    /**
+     * Creates a new pane with the desired title
+     * @param title the desired title to be shown in the pane itself
+     */
+    public void addPane(String title)
     {
-        this.allPaneButtons.add(new PaneButton(text));
+        this.allPaneButtons.add(new PaneButton(title));
     }
 }

@@ -13,6 +13,9 @@ public class LogLinePanel extends JPanel
     private JButton arrowButton;
     private JTextArea messageArea;
     
+    /**
+     * Creates a new logLinePanel
+     */
     public LogLinePanel()
     {
         super();
@@ -30,6 +33,10 @@ public class LogLinePanel extends JPanel
         this.add(this.arrowButton);
     }
     
+    /**
+     * Changes the current error shown
+     * @param message the message to show
+     */
     public void changeMessage(String message)
     {
         this.currentMessage = message;

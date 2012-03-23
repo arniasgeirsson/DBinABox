@@ -12,6 +12,9 @@ public class ButtonPanel extends JPanel
     private JButton executeButton;
     private JButton pushImageButton;
     
+    /**
+     * Creates a new buttonPanel
+     */
     public ButtonPanel()
     {
         super();

@@ -21,16 +21,14 @@ public class MainFrame extends JFrame
     private ArrayList<WindowPanel> allWindows;
     private int currentWindowPanel;
     
-    private LogPanel logPanel;
-    private TablePanel tablePanel;
-    private DatabasePanel databasePanel;
-    private DataPanel dataPanel;
-    
     public static void main(String args[])
     {
         new MainFrame();
     }
     
+    /**
+     * Creates a new frame that starts with a LoginPanel.
+     */
     public MainFrame()
     {
         super();
@@ -47,6 +45,9 @@ public class MainFrame extends JFrame
         this.goFromLogin();
     }
     
+    /**
+     * Changes the state of the frame to main state.
+     */
     public void goFromLogin()
     {
         this.insets = this.getInsets();
@@ -55,11 +56,14 @@ public class MainFrame extends JFrame
         
         this.getContentPane().removeAll();
         this.createMainFramePanels();
-        
+        this.addAllMainPanels();
         this.validate();
         this.repaint();
     }
     
+    /**
+     * Changes the state of the frame to login state.
+     */
     public void goToLogin()
     {
         this.insets = this.getInsets();
@@ -75,6 +79,9 @@ public class MainFrame extends JFrame
         this.repaint();
     }
     
+    /**
+     * Creates all the panels for the main state of the frame.
+     */
     private void createMainFramePanels()
     {
         int topPanelHeight = (FRAME_PREF_HEIGHT/12);
@@ -105,7 +112,13 @@ public class MainFrame extends JFrame
             this.logLinePanel = new LogLinePanel();
             this.logLinePanel.setBounds(0, topPanelHeight+windowPanelHeight, windowPanelWidth, logLineHeight);
         }
-        
+    }
+    
+    /**
+     * Adds all the main panels to the frame.
+     */
+    public void addAllMainPanels()
+    {
         this.getContentPane().add(this.topPanel);
         this.getContentPane().add(this.buttonPanel);
         for (WindowPanel temp : this.allWindows)
@@ -116,6 +129,9 @@ public class MainFrame extends JFrame
         this.getContentPane().add(this.logLinePanel);
     }
     
+    /**
+     * Makes the active windowPanel visible and the rest invisible.
+     */
     public void makeWindowPanelVisible()
     {
         for (int i = 0; i < this.allWindows.size(); i++)
@@ -129,11 +145,20 @@ public class MainFrame extends JFrame
         }
     }
     
+    /**
+     * Changes the active windowPanel
+     * Note: It does not make it visible
+     * @param nextWindowPanel index of the next windowPanel
+     */
     public void setCurrentWindowPanel(int nextWindowPanel)
     {
         this.currentWindowPanel = nextWindowPanel;
     }
     
+    /**
+     * Creates a new windowPanel
+     * @return the newly created windowPanel
+     */
     public WindowPanel createWindowPanel()
     {
         int topPanelHeight = (FRAME_PREF_HEIGHT/12);
@@ -147,9 +172,15 @@ public class MainFrame extends JFrame
         return newWindowPanel;
     }
     
-    public void changePane()
+    /**
+     * Changes the current active pane.
+     * @param nextCurrentWindow the index of the next active window
+     */
+    public void changePane(int nextCurrentWindow)
     {
-        
+//        Nødvendig?
+        this.setCurrentWindowPanel(nextCurrentWindow);
+        this.makeWindowPanelVisible();
     }
   
 }
