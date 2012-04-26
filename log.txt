@@ -1,0 +1,48 @@
+commit 963d3575545b2bb5ac55804d987ee5a518c67f78
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Fri Mar 23 19:21:49 2012 +0100
+
+    Added javadoc to all current methods in view package
+
+commit 8b37f4818409e5b0c7674b9262f93bd3b2f73ae2
+Merge: d205b15 a7ff487
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Fri Mar 23 18:47:30 2012 +0100
+
+    Merge branch 'master' of github.com:AwsomeArni/DBinABox
+
+commit d205b15692bd16940f1bc78291a20edda1e80e04
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Fri Mar 23 18:45:42 2012 +0100
+
+    Added several more classes. Created working skeletal MainFrame
+
+commit a7ff4878eb3086c467e7e9009566646419b47524
+Author: unknown <Peter@Peter-PC.(none)>
+Date:   Thu Mar 22 21:41:15 2012 +0100
+
+    Login created and working (hardcoded db)
+
+commit 8c3dd2b2922f3683211a18816e4291d51cf6bed6
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Thu Mar 22 16:19:26 2012 +0100
+
+    Minor fixes, added HistorikPanel
+
+commit b818bed430bf2b5e50df3bdfbd7211ec4068354f
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Thu Mar 22 16:04:36 2012 +0100
+
+    LoginPanel created and working
+
+commit f886d823358a1ff4368940460af9fcf501cbde83
+Author: unknown <Peter@Peter-Laptop.(none)>
+Date:   Thu Mar 15 15:41:00 2012 +0100
+
+    Basis struktur
+
+commit 9c3c6f73ac22f2c8d8c3728a960fa3b532ba8d54
+Author: AwsomeArni <Arnidat@gmail.com>
+Date:   Thu Mar 15 15:29:45 2012 +0100
+
+    Readme
