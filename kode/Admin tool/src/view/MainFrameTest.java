@@ -10,37 +10,31 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import model.Login;
+
 public class MainFrameTest extends JFrame
 {
 
     private JPanel contentPane;
     private JTextField txtTabletest;
+    private LoginFrame currentLoginFrame;
+    private static MainFrameTest instance;
+    
+    public static MainFrameTest getInstance(){
+        if(MainFrameTest.instance == null)
+            MainFrameTest.instance = new MainFrameTest();
+        return MainFrameTest.instance;
+    }
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args)
+    public LoginFrame getLoginFrame()
     {
-        EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                try
-                {
-                    MainFrameTest frame = new MainFrameTest();
-                    frame.setVisible(true);
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        });
+        return this.currentLoginFrame;
     }
 
     /**
      * Create the frame.
      */
-    public MainFrameTest()
+    private MainFrameTest()
     {
         setTitle("DB in a box - Admin Tool");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +56,7 @@ public class MainFrameTest extends JFrame
         btnPushImage.setBounds(624, 183, 120, 40);
         contentPane.add(btnPushImage);
         
-        TablePanelTest tablePanelTest = new TablePanelTest();
+        TablePanel tablePanelTest = new TablePanel();
         tablePanelTest.setBounds(10, 61, 600, 455);
         contentPane.add(tablePanelTest);
         
@@ -88,7 +82,7 @@ public class MainFrameTest extends JFrame
         btnForward.setBounds(70, 11, 50, 40);
         contentPane.add(btnForward);
         
-        PanePanelTest panePanelTest = new PanePanelTest();
+        PanePanel panePanelTest = new PanePanel();
         panePanelTest.setBounds(130, 11, 480, 40);
         contentPane.add(panePanelTest);
     }

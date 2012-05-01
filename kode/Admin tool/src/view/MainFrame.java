@@ -20,10 +20,12 @@ public class MainFrame extends JFrame
     private ArrayList<WindowPanel> allWindows;
     private int currentWindowPanel;
     
+    /*
     public static void main(String args[])
     {
         new MainFrame();
     }
+    */
     
     /**
      * Creates a new frame that starts with a LoginPanel.
@@ -70,7 +72,7 @@ public class MainFrame extends JFrame
                 FRAME_LOGIN_PREF_HEIGHT+this.insets.top+this.insets.bottom);
         
         this.getContentPane().removeAll();
-        LoginPanel loginPanel = new LoginPanel();
+        LoginFrame loginPanel = new LoginFrame();
         loginPanel.setSize(FRAME_LOGIN_PREF_WIDTH, FRAME_LOGIN_PREF_HEIGHT);
         this.getContentPane().add(loginPanel);
         
