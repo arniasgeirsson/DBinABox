@@ -1,0 +1,21 @@
+package model;
+
+import java.util.HashMap;
+
+public class TabManager
+{
+    private static TabManager instance;
+    
+    private HashMap taps; 
+     
+    private TabManager(){
+        //Bla
+    }
+    
+    public static TabManager getInstance(){
+        if (TabManager.instance == null)
+            TabManager.instance = new TabManager();
+        return TabManager.instance;
+    }
+}
+
