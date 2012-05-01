@@ -6,6 +6,11 @@ import javax.swing.JPanel;
 
 public class WindowPanel extends JPanel
 {
+    private DatabasePanel databasePanel;
+    private TablePanel tablePanel;
+    private DataPanel dataPanel;
+    private LogPanel logPanel;
+    
     /**
      * Creates a new windowPanel
      */
@@ -27,7 +32,7 @@ public class WindowPanel extends JPanel
     /**
      * Changes the current view to a tabelPanel
      */
-    public void showTabelPanel()
+    public void showTablePanel()
     {
         this.removeAll();
         this.add(new TablePanel());

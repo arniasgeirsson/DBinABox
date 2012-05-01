@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 
