@@ -4,9 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class Login
 {
-    private Login()
+    private String username;
+    private String password;
+    
+    public Login()
     {
         
     }
@@ -23,6 +27,10 @@ public class Login
                                                id, password);
             conn.setAutoCommit(false);
             
+            this.username = id;
+            this.password = password;
+            
+            
             return true;
         } 
         
@@ -38,5 +46,13 @@ public class Login
         }
         
         return false;
+    }
+    
+    public String getUsername(){
+        return this.username;
+    }
+    
+    public String getPassword(){
+        return this.password;
     }
 }
