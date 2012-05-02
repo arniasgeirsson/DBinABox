@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,25 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import model.Login;
-
 public class MainFrameTest extends JFrame
 {
 
     private JPanel contentPane;
-    private JTextField txtTabletest;
-    private LoginFrame currentLoginFrame;
+    private JTextField txtHistorikLine;
+    private TabPanel tabPanel;
+    private JPanel windowPanel;
+    
     private static MainFrameTest instance;
     
     public static MainFrameTest getInstance(){
         if(MainFrameTest.instance == null)
             MainFrameTest.instance = new MainFrameTest();
         return MainFrameTest.instance;
-    }
-
-    public LoginFrame getLoginFrame()
-    {
-        return this.currentLoginFrame;
     }
 
     /**
@@ -56,34 +48,98 @@ public class MainFrameTest extends JFrame
         btnPushImage.setBounds(624, 183, 120, 40);
         contentPane.add(btnPushImage);
         
-        TablePanel tablePanelTest = new TablePanel();
-        tablePanelTest.setBounds(10, 61, 600, 455);
-        contentPane.add(tablePanelTest);
+        JLabel versionLabel = new JLabel("Admin Tool - Version 0.1");
+        versionLabel.setBounds(639, 537, 135, 14);
+        contentPane.add(versionLabel);
         
-        JLabel lblAdminTool = new JLabel("Admin Tool - Version 0.1");
-        lblAdminTool.setBounds(639, 537, 135, 14);
-        contentPane.add(lblAdminTool);
+        txtHistorikLine = new JTextField();
+        txtHistorikLine.setText("- Table \"Test1\" created");
+        txtHistorikLine.setBounds(10, 527, 580, 24);
+        contentPane.add(txtHistorikLine);
+        txtHistorikLine.setColumns(10);
         
-        txtTabletest = new JTextField();
-        txtTabletest.setText("- Table \"Test1\" created");
-        txtTabletest.setBounds(10, 527, 580, 24);
-        contentPane.add(txtTabletest);
-        txtTabletest.setColumns(10);
+        JButton btnHistorik = new JButton("UP");
+        btnHistorik.setBounds(589, 527, 20, 24);
+        contentPane.add(btnHistorik);
         
-        JButton btnNewButton = new JButton("UP");
-        btnNewButton.setBounds(589, 527, 20, 24);
-        contentPane.add(btnNewButton);
-        
-        JButton btnNewButton_1 = new JButton("Back");
-        btnNewButton_1.setBounds(10, 11, 50, 40);
-        contentPane.add(btnNewButton_1);
+        JButton btnBack = new JButton("Back");
+        btnBack.setBounds(10, 11, 50, 40);
+        contentPane.add(btnBack);
         
         JButton btnForward = new JButton("Forward");
         btnForward.setBounds(70, 11, 50, 40);
         contentPane.add(btnForward);
         
-        PanePanel panePanelTest = new PanePanel();
-        panePanelTest.setBounds(130, 11, 480, 40);
-        contentPane.add(panePanelTest);
+        this.tabPanel = new TabPanel();
+        tabPanel.setBounds(130, 11, 480, 40);
+        contentPane.add(tabPanel);
+        
+        this.windowPanel = new JPanel();
+        //windowPanel.setBackground(Color.WHITE);
+        windowPanel.setBounds(10, 61, 600, 455);
+        this.windowPanel.setLayout(null);
+        contentPane.add(windowPanel);
+        
+        JButton btnLogOut = new JButton("Log out");
+        btnLogOut.setBounds(624, 234, 120, 40);
+        btnLogOut.addActionListener(new controller.LogOutListener());
+        contentPane.add(btnLogOut);
+        
+        this.updateWindowPanel();
+    }
+    
+    public void addTab()
+    {
+        this.tabPanel.addNewTab();
+        this.validate();
+        this.repaint();
+    }
+    
+    public void removeTab(int index)
+    {
+        this.tabPanel.removeTab(index);
+        this.updateWindowPanel();
+    }
+    
+    public TabPanel getTabPanel()
+    {
+        return this.tabPanel;
+    }
+    
+    public void updateWindowPanel()
+    {
+        this.windowPanel.removeAll();
+        model.TabManager tabManager = model.TabManager.getInstance();
+        this.windowPanel.add(tabManager.getCurrentTab().getActivePanel());
+        this.validate();
+        this.repaint();
+    }
+    
+    public void switchTooTablePanel()
+    {
+        model.TabManager tabManager = model.TabManager.getInstance();
+        tabManager.getCurrentTab().switchToTableView();
+        this.updateWindowPanel();
+    }
+    
+    public void switchTooDataViewPanel()
+    {
+        model.TabManager tabManager = model.TabManager.getInstance();
+        tabManager.getCurrentTab().switchToDataView();
+        this.updateWindowPanel();
+    }
+    
+    public void openHistorik()
+    {
+        this.windowPanel.removeAll();
+        this.windowPanel.add(new HistorikPanel());
+        this.validate();
+        this.repaint();
+    }
+    
+    public void closeHistorik()
+    {
+        this.windowPanel.removeAll();
+        this.updateWindowPanel();
     }
 }

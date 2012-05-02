@@ -17,6 +17,7 @@ public class DataViewPanel extends JPanel
     public DataViewPanel()
     {
         setLayout(null);
+        this.setBounds(0, 0, 600, 455);
         
         JLabel lblAllDataOf = new JLabel("All Data of a specific tabel");
         lblAllDataOf.setBounds(0, 0, 600, 30);

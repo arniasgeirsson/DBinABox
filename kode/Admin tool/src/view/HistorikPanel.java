@@ -14,6 +14,8 @@ public class HistorikPanel extends JPanel
     public HistorikPanel()
     {
         setBackground(Color.BLACK);
+        this.setBounds(0, 0, 600, 455);
+
         setLayout(null);
         
         JLabel lblHistorik = new JLabel("Current historik:");

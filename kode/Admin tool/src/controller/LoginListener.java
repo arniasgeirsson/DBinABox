@@ -2,16 +2,24 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class LoginListener implements ActionListener
 {
 
     @Override
-    public void actionPerformed(ActionEvent arg0)
+    public void actionPerformed(ActionEvent e)
     {
-        view.LoginFrame frame = view.MainFrameTest.getInstance().getLoginFrame();
-        model.TabManager tabs =  model.TabManager.getInstance();
-        System.out.println(tabs.addTab(frame.getUsername(), frame.getPassword(), "", 0));
+        model.MainManager mainManager = model.MainManager.getInstance();
+        view.LoginFrame loginFrame = mainManager.getCurrentLoginFrame();
+        model.TabManager tabs = model.TabManager.getInstance();
+        
+        if (tabs.addTab(loginFrame.getUsername(), loginFrame.getPassword(), "", 0))
+        {
+            mainManager.addTab();
+        } else {
+            mainManager.wrongLogin();
+        }
     }
-
 }

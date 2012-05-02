@@ -1,8 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -22,28 +19,7 @@ public class LoginFrame extends JFrame
     private JTextField username;
     private JTextField port;
     private JTextField url;
-
-    /**
-     * Launch the application.
-     *
-    public static void main(String[] args)
-    {
-        EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                try
-                {
-                    LoginPanel frame = new LoginPanel();
-                    frame.setVisible(true);
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }*/
-
+    
     /**
      * Create the frame.
      */
@@ -102,14 +78,18 @@ public class LoginFrame extends JFrame
         url.setBounds(161, 144, 235, 23);
         url.setColumns(10);
         contentPane.add(url);
+        
+        JLabel lblWrongLoginInfo = new JLabel("Wrong login info");
+        lblWrongLoginInfo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblWrongLoginInfo.setBounds(161, 178, 235, 23);
+        contentPane.add(lblWrongLoginInfo);
     }
     
     public String getPassword(){
-        return this.password.toString();
+        return new String(this.password.getPassword());
     }
     
     public String getUsername(){
-        return this.username.toString();
+        return this.username.getText();
     }
-    
 }

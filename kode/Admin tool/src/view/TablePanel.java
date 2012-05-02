@@ -19,7 +19,7 @@ public class TablePanel extends JPanel
     public TablePanel()
     {
         setLayout(null);
-        
+        this.setBounds(0, 0, 600, 455);
         table = new JTable();
         table.setBounds(0, 30, 580, 405);
         table.setModel(new DefaultTableModel(
