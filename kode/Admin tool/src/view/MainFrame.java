@@ -1,187 +1,144 @@
 package view;
 
-import java.awt.Insets;
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class MainFrame extends JFrame
 {
-    public static final int FRAME_LOGIN_PREF_WIDTH = 500;
-    public static final int FRAME_LOGIN_PREF_HEIGHT = 300;
-    public static final int FRAME_PREF_WIDTH = 800;
-    public static final int FRAME_PREF_HEIGHT = 600;
+
+    private JPanel contentPane;
+    private JTextField txtHistorikLine;
+    private TabPanel tabPanel;
+    private JPanel windowPanel;
     
-    private Insets insets;
+    private static MainFrame instance;
     
-    private ButtonPanel buttonPanel;
-    private LogLinePanel logLinePanel;
-    private TopPanel topPanel;
-    private ArrayList<WindowPanel> allWindows;
-    private int currentWindowPanel;
-    
-    /*
-    public static void main(String args[])
-    {
-        new MainFrame();
+    public static MainFrame getInstance(){
+        if(MainFrame.instance == null)
+            MainFrame.instance = new MainFrame();
+        return MainFrame.instance;
     }
-    */
-    
+
     /**
-     * Creates a new frame that starts with a LoginPanel.
+     * Create the frame.
      */
-    public MainFrame()
+    private MainFrame()
     {
-        super();
+        setTitle("DB in a box - Admin Tool");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 600);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
         
-        this.pack();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-//        this.setLocationRelativeTo(null);
-//        this.setLayout(new FlowLayout());
-        this.setLayout(null);
-        this.setVisible(true);
+        JButton btnExecuteSql = new JButton("Execute SQL");
+        btnExecuteSql.setBounds(624, 61, 120, 40);
+        contentPane.add(btnExecuteSql);
         
-//        this.goToLogin();
-        this.goFromLogin();
+        JButton btnOpen = new JButton("Open");
+        btnOpen.setBounds(624, 122, 120, 40);
+        btnOpen.addActionListener(new controller.OpenListener());
+        contentPane.add(btnOpen);
+        
+        JButton btnPushImage = new JButton("Push image");
+        btnPushImage.setBounds(624, 183, 120, 40);
+        contentPane.add(btnPushImage);
+        
+        JLabel versionLabel = new JLabel("Admin Tool - Version 0.1");
+        versionLabel.setBounds(639, 537, 135, 14);
+        contentPane.add(versionLabel);
+        
+        txtHistorikLine = new JTextField();
+        txtHistorikLine.setText("- Table \"Test1\" created");
+        txtHistorikLine.setBounds(10, 527, 580, 24);
+        contentPane.add(txtHistorikLine);
+        txtHistorikLine.setColumns(10);
+        
+        JButton btnHistorik = new JButton("UP");
+        btnHistorik.setBounds(589, 527, 20, 24);
+        contentPane.add(btnHistorik);
+        
+        JButton btnBack = new JButton("Back");
+        btnBack.setBounds(10, 11, 50, 40);
+        contentPane.add(btnBack);
+        
+        JButton btnForward = new JButton("Forward");
+        btnForward.setBounds(70, 11, 50, 40);
+        contentPane.add(btnForward);
+        
+        this.tabPanel = new TabPanel();
+        tabPanel.setBounds(130, 11, 480, 40);
+        contentPane.add(tabPanel);
+        
+        this.windowPanel = new JPanel();
+        //windowPanel.setBackground(Color.WHITE);
+        windowPanel.setBounds(10, 61, 600, 455);
+        this.windowPanel.setLayout(null);
+        contentPane.add(windowPanel);
+        
+        JButton btnLogOut = new JButton("Log out");
+        btnLogOut.setBounds(624, 234, 120, 40);
+        btnLogOut.addActionListener(new controller.LogOutListener());
+        contentPane.add(btnLogOut);
+        
+        this.updateWindowPanel();
     }
     
-    /**
-     * Changes the state of the frame to main state.
-     */
-    public void goFromLogin()
+    public void addTab()
     {
-        this.insets = this.getInsets();
-        this.setSize(FRAME_PREF_WIDTH+this.insets.right+this.insets.left, 
-                FRAME_PREF_HEIGHT+this.insets.top+this.insets.bottom);
-        
-        this.getContentPane().removeAll();
-        this.createMainFramePanels();
-        this.addAllMainPanels();
+        this.tabPanel.addNewTab();
+        this.updateWindowPanel();
+    }
+    
+    public void removeTab(int index)
+    {
+        this.tabPanel.removeTab(index);
+    }
+    
+    public TabPanel getTabPanel()
+    {
+        return this.tabPanel;
+    }
+    
+    public void updateWindowPanel()
+    {
+        this.windowPanel.removeAll();
+        model.TabManager tabManager = model.TabManager.getInstance();
+        this.windowPanel.add(tabManager.getCurrentTab().getActivePanel());
         this.validate();
         this.repaint();
     }
     
-    /**
-     * Changes the state of the frame to login state.
-     */
-    public void goToLogin()
+    public void switchTooTablePanel()
     {
-        this.insets = this.getInsets();
-        this.setSize(FRAME_LOGIN_PREF_WIDTH+this.insets.right+this.insets.left, 
-                FRAME_LOGIN_PREF_HEIGHT+this.insets.top+this.insets.bottom);
-        
-        this.getContentPane().removeAll();
-        LoginFrame loginPanel = new LoginFrame();
-        loginPanel.setSize(FRAME_LOGIN_PREF_WIDTH, FRAME_LOGIN_PREF_HEIGHT);
-        this.getContentPane().add(loginPanel);
-        
+        model.TabManager tabManager = model.TabManager.getInstance();
+        tabManager.getCurrentTab().switchToTableView();
+        this.updateWindowPanel();
+    }
+    
+    public void switchTooDataViewPanel()
+    {
+        model.TabManager tabManager = model.TabManager.getInstance();
+        tabManager.getCurrentTab().switchToDataView();
+        this.updateWindowPanel();
+    }
+    
+    public void openHistorik()
+    {
+        this.windowPanel.removeAll();
+        this.windowPanel.add(new HistorikPanel());
         this.validate();
         this.repaint();
     }
     
-    /**
-     * Creates all the panels for the main state of the frame.
-     */
-    private void createMainFramePanels()
+    public void closeHistorik()
     {
-        int topPanelHeight = (FRAME_PREF_HEIGHT/12);
-        int logLineHeight = (FRAME_PREF_HEIGHT/20);
-        int windowPanelHeight = (FRAME_PREF_HEIGHT-topPanelHeight-logLineHeight);
-        int windowPanelWidth = (FRAME_PREF_WIDTH-(FRAME_PREF_WIDTH/6));
-        
-        if (this.topPanel == null)
-        {
-            this.topPanel = new TopPanel();
-            this.topPanel.setBounds(0, 0, windowPanelWidth, topPanelHeight);
-        }
-        if (this.buttonPanel == null)
-        {
-            this.buttonPanel = new ButtonPanel();
-            this.buttonPanel.setBounds(windowPanelWidth, 0, (FRAME_PREF_WIDTH - windowPanelWidth), FRAME_PREF_HEIGHT);
-        }
-        
-        if (this.allWindows == null)
-        {
-            this.allWindows = new ArrayList<WindowPanel>();
-            this.allWindows.add(this.createWindowPanel());
-            this.currentWindowPanel = 0;
-        }
-        
-        if (this.logLinePanel == null)
-        {
-            this.logLinePanel = new LogLinePanel();
-            this.logLinePanel.setBounds(0, topPanelHeight+windowPanelHeight, windowPanelWidth, logLineHeight);
-        }
+        this.windowPanel.removeAll();
+        this.updateWindowPanel();
     }
-    
-    /**
-     * Adds all the main panels to the frame.
-     */
-    public void addAllMainPanels()
-    {
-        this.getContentPane().add(this.topPanel);
-        this.getContentPane().add(this.buttonPanel);
-        for (WindowPanel temp : this.allWindows)
-        {
-            this.getContentPane().add(temp);
-        }
-        this.makeWindowPanelVisible();
-        this.getContentPane().add(this.logLinePanel);
-    }
-    
-    /**
-     * Makes the active windowPanel visible and the rest invisible.
-     */
-    public void makeWindowPanelVisible()
-    {
-        for (int i = 0; i < this.allWindows.size(); i++)
-        {
-            if (this.currentWindowPanel != i)
-            {
-                this.allWindows.get(i).setVisible(false);
-            } else {
-                this.allWindows.get(i).setVisible(true);
-            }
-        }
-    }
-    
-    /**
-     * Changes the active windowPanel
-     * Note: It does not make it visible
-     * @param nextWindowPanel index of the next windowPanel
-     */
-    public void setCurrentWindowPanel(int nextWindowPanel)
-    {
-        this.currentWindowPanel = nextWindowPanel;
-    }
-    
-    /**
-     * Creates a new windowPanel
-     * @return the newly created windowPanel
-     */
-    public WindowPanel createWindowPanel()
-    {
-        int topPanelHeight = (FRAME_PREF_HEIGHT/12);
-        int logLineHeight = (FRAME_PREF_HEIGHT/20);
-        int windowPanelHeight = (FRAME_PREF_HEIGHT-topPanelHeight-logLineHeight);
-        int windowPanelWidth = (FRAME_PREF_WIDTH-(FRAME_PREF_WIDTH/6));
-        
-        WindowPanel newWindowPanel = new WindowPanel();
-        newWindowPanel.setBounds(0, topPanelHeight, windowPanelWidth, windowPanelHeight);
-        newWindowPanel.setVisible(false);
-        return newWindowPanel;
-    }
-    
-    /**
-     * Changes the current active pane.
-     * @param nextCurrentWindow the index of the next active window
-     */
-    public void changePane(int nextCurrentWindow)
-    {
-//        Nødvendig?
-        this.setCurrentWindowPanel(nextCurrentWindow);
-        this.makeWindowPanelVisible();
-    }
-  
 }

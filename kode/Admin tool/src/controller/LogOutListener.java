@@ -9,10 +9,11 @@ public class LogOutListener implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        view.MainFrameTest mainFrame = view.MainFrameTest.getInstance();
+        view.MainFrame mainFrame = view.MainFrame.getInstance();
         mainFrame.removeTab(model.TabManager.getInstance().getCurrentTabIndex());
         
         model.TabManager.getInstance().removeCurrentTab();
+        mainFrame.updateWindowPanel();
     }
 
 }

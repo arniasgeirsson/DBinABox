@@ -10,7 +10,7 @@ public class TabListener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         int selectedTab = 0;
-        view.MainFrameTest mainFrame = view.MainFrameTest.getInstance();
+        view.MainFrame mainFrame = view.MainFrame.getInstance();
         view.TabPanel tabPanel = mainFrame.getTabPanel();
         
         for (int i = 0; i < tabPanel.getNumberOfTabs(); i++)

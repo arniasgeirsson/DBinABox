@@ -34,7 +34,7 @@ public class MainManager
     public void addTab()
     {
         this.currentLoginFrame.setVisible(false);
-        view.MainFrameTest mainFrame = view.MainFrameTest.getInstance();
+        view.MainFrame mainFrame = view.MainFrame.getInstance();
         mainFrame.setVisible(true);
         mainFrame.addTab();
     }
