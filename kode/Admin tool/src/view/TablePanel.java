@@ -23,7 +23,7 @@ public class TablePanel extends JPanel
         table = new JTable();
         table.setBounds(0, 30, 580, 405);
         table.setModel(new DefaultTableModel(
-            new Object[][] {
+            new String[][] {
                 {"Test 1 2 3j"},
                 {"TestafdsfdTestafdsfdsfihsdakfjhsadkjfhsadkljfhsdakljfhskldjahfsjdkafnksdljafnjsdkanfjlanTestafdsfdsfihsdakfjhsadkjfhsadkljfhsdakljfhskldjahfsjdkafnksdljafnjsdkanfjlanTestafdsfdsfihsdakfjhsadkjfhsadkljfhsdakljfhskldjahfsjdkafnksdljafnjsdkanfjlansadTestafdsfdsfihsdakfjhsadkjfhsadkljfhsdakljfhskldjahfsjdkafnksdljafnjsdkanfjlansfihsdakfjhsadkjfhsadkljfhsdakljfhskldjahfsjdkafnksdljafnjsdkanfjlan"},
                 {"ij"},
@@ -54,14 +54,14 @@ public class TablePanel extends JPanel
         table.getColumnModel().getColumn(0).setMinWidth(40);
         add(table);
         
-        JScrollBar scrollBar = new JScrollBar();
-        scrollBar.setBounds(580, 30, 20, 425);
-        add(scrollBar);
+        JScrollBar scrollBarVer = new JScrollBar();
+        scrollBarVer.setBounds(580, 30, 20, 425);
+        add(scrollBarVer);
         
-        JScrollBar scrollBar_1 = new JScrollBar();
-        scrollBar_1.setOrientation(JScrollBar.HORIZONTAL);
-        scrollBar_1.setBounds(0, 435, 580, 20);
-        add(scrollBar_1);
+        JScrollBar scrollBarHor = new JScrollBar();
+        scrollBarHor.setOrientation(JScrollBar.HORIZONTAL);
+        scrollBarHor.setBounds(0, 435, 580, 20);
+        add(scrollBarHor);
         
         JLabel lblNewLabel = new JLabel("List of all Tables (attributes)");
         lblNewLabel.setBounds(0, 0, 600, 30);

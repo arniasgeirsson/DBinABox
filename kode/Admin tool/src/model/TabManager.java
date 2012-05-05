@@ -11,7 +11,7 @@ public class TabManager
     
     
     private ArrayList<Tab> allTabs;
-    private int currentTab;
+    private int activeTab;
     
     
     private TabManager(){
@@ -19,7 +19,7 @@ public class TabManager
         this.key = 0;
         
         
-        this.currentTab = -1;
+        this.activeTab = -1;
         this.allTabs = new ArrayList<Tab>();
     }
     
@@ -38,7 +38,7 @@ public class TabManager
             
             
             this.allTabs.add(new Tab(login));
-            this.currentTab++;
+            this.activeTab++;
             
             
             return true;
@@ -49,9 +49,9 @@ public class TabManager
     
     public void removeCurrentTab()
     {
-        this.allTabs.remove(this.currentTab);
-        if (this.currentTab > this.allTabs.size())
-            this.currentTab--;
+        this.allTabs.remove(this.activeTab);
+        if (this.activeTab > this.allTabs.size())
+            this.activeTab--;
     }
     
     public int getKey(){
@@ -64,16 +64,16 @@ public class TabManager
     
     public void switchTab(int nextSelectedTab)
     {
-        this.currentTab = nextSelectedTab;
+        this.activeTab = nextSelectedTab;
     }
     
     public Tab getCurrentTab()
     {
-        return this.allTabs.get(this.currentTab);
+        return this.allTabs.get(this.activeTab);
     }
     
     public int getCurrentTabIndex()
     {
-        return this.currentTab;
+        return this.activeTab;
     }
 }

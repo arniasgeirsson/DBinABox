@@ -14,6 +14,8 @@ public class MainFrame extends JFrame
     private JTextField txtHistorikLine;
     private TabPanel tabPanel;
     private JPanel windowPanel;
+    private ExecuteSQLDialog dialog;
+    
     
     private static MainFrame instance;
     
@@ -28,6 +30,7 @@ public class MainFrame extends JFrame
      */
     private MainFrame()
     {
+        setResizable(false);
         setTitle("DB in a box - Admin Tool");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 600);
@@ -38,6 +41,7 @@ public class MainFrame extends JFrame
         
         JButton btnExecuteSql = new JButton("Execute SQL");
         btnExecuteSql.setBounds(624, 61, 120, 40);
+        btnExecuteSql.addActionListener(new controller.OpenExecuteListener());
         contentPane.add(btnExecuteSql);
         
         JButton btnOpen = new JButton("Open");
@@ -140,5 +144,21 @@ public class MainFrame extends JFrame
     {
         this.windowPanel.removeAll();
         this.updateWindowPanel();
+    }
+    
+    public void showExecuteSQLDialog()
+    {
+        this.dialog = new ExecuteSQLDialog();
+        dialog.setVisible(true);
+    }
+    
+    public void closeExecuteSQLDialog()
+    {
+        dialog.setVisible(false);
+    }
+    
+    public ExecuteSQLDialog getExecuteSQLDialog()
+    {
+        return this.dialog;
     }
 }
