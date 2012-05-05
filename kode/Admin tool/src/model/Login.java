@@ -9,6 +9,8 @@ public class Login
 {
     private String username;
     private String password;
+    private String port;
+    private String URL;
     
     public Login()
     {
@@ -30,11 +32,10 @@ public class Login
             this.username = id;
             this.password = password;
             
-            
+            conn.close();
             return true;
         } 
         
-        //TODO: ?? :P 
         catch(SQLException e)
         {
             System.out.println(e);

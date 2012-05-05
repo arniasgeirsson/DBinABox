@@ -15,6 +15,11 @@ public class Tab
         this.switchToTableView();
     }
     
+    public Login getLogin()
+    {
+        return this.login;
+    }
+    
     public void switchToTableView()
     {
         this.tableView = true;
@@ -30,7 +35,7 @@ public class Tab
     public JPanel getActivePanel()
     {
         if (this.tableView)
-            return new view.TablePanel();
+            return new view.TablePanel(SQLManager.getInstance().getAllTables(this));
         if (this.dataView)
             return new view.DataViewPanel();
         
