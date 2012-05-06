@@ -13,12 +13,12 @@ public class DataViewPanel extends JPanel
     /**
      * Create the panel.
      */
-    public DataViewPanel(Object[][] allData, String[] attributes)
+    public DataViewPanel(Object[][] allData, String[] attributes, String tableName)
     {
         setLayout(null);
         this.setBounds(0, 0, 600, 455);
         
-        JLabel lblAllDataOf = new JLabel("All Data of a specific tabel");
+        JLabel lblAllDataOf = new JLabel("All Data of a specific tabel: "+tableName);
         lblAllDataOf.setBounds(0, 0, 600, 30);
         add(lblAllDataOf);
         

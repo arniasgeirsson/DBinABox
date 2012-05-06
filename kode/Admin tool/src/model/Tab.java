@@ -44,7 +44,8 @@ public class Tab
         if (this.tableView)
             return new view.TablePanel(sqlManager.getAllTables(this));
         if (this.dataView)
-            return new view.DataViewPanel(sqlManager.getAllData(this, this.tableName), sqlManager.getColumnNames(this, this.tableName));
+            return new view.DataViewPanel(sqlManager.getAllData(this, this.tableName), 
+                    sqlManager.getColumnNames(this, this.tableName), this.tableName);
         
         return null;
     }
