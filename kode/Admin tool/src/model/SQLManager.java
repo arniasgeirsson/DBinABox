@@ -159,4 +159,28 @@ public class SQLManager
         }
         return null;
     }
+    
+    public void ExecuteSql(Tab tab, String query)
+    {
+        Connection conn;
+        int port = 1521;
+        Login login = tab.getLogin();
+        
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conn = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+            conn.setAutoCommit(false);
+            
+            PreparedStatement stm = conn.prepareStatement(query);
+            stm.executeQuery();
+            conn.commit();
+            conn.close();
+                
+        } catch(SQLException e) {
+            System.out.println(e);
+        } catch(ClassNotFoundException e) {
+            System.out.println(e);
+        }
+    }
 }

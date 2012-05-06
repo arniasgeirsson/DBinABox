@@ -113,7 +113,7 @@ public class MainFrame extends JFrame
     {
         this.windowPanel.removeAll();
         model.TabManager tabManager = model.TabManager.getInstance();
-        this.windowPanel.add(tabManager.getCurrentTab().getActivePanel());
+        this.windowPanel.add(tabManager.getActiveTab().getActivePanel());
         this.validate();
         this.repaint();
     }
@@ -121,14 +121,14 @@ public class MainFrame extends JFrame
     public void switchTooTablePanel()
     {
         model.TabManager tabManager = model.TabManager.getInstance();
-        tabManager.getCurrentTab().switchToTableView();
+        tabManager.getActiveTab().switchToTableView();
         this.updateWindowPanel();
     }
     
     public void switchTooDataViewPanel()
     {
         model.TabManager tabManager = model.TabManager.getInstance();
-        tabManager.getCurrentTab().switchToDataView();
+        tabManager.getActiveTab().switchToDataView();
         this.updateWindowPanel();
     }
     

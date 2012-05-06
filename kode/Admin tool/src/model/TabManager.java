@@ -47,7 +47,7 @@ public class TabManager
         return false;
     }
     
-    public void removeCurrentTab()
+    public void removeActiveTab()
     {
         this.allTabs.remove(this.activeTab);
         if (this.activeTab > this.allTabs.size())
@@ -67,12 +67,12 @@ public class TabManager
         this.activeTab = nextSelectedTab;
     }
     
-    public Tab getCurrentTab()
+    public Tab getActiveTab()
     {
         return this.allTabs.get(this.activeTab);
     }
     
-    public int getCurrentTabIndex()
+    public int getActiveTabIndex()
     {
         return this.activeTab;
     }

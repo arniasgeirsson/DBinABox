@@ -10,9 +10,9 @@ public class ExecuteListener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         view.MainFrame mainFrame = view.MainFrame.getInstance();
-        String statement = mainFrame.getExecuteSQLDialog().getInput();
-        System.out.println(statement);
-        
+        String query = mainFrame.getExecuteSQLDialog().getInput();
+        model.SQLManager.getInstance().ExecuteSql(model.TabManager.getInstance().getActiveTab(), query);
+        mainFrame.updateWindowPanel();
         mainFrame.closeExecuteSQLDialog();
     }
 
