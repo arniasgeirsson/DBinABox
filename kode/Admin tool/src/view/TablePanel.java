@@ -19,7 +19,7 @@ public class TablePanel extends JPanel
         this.setBounds(0, 0, 600, 455);
         table = new JTable();
         table.setModel(new DefaultTableModel(tables, new String[] {"Tables"}));
-
+        
         JScrollPane pane = new JScrollPane(this.table);
         pane.setBounds(0, 30, 600, 405);
 
@@ -31,6 +31,9 @@ public class TablePanel extends JPanel
     
     public String getSelectedTablename()
     {
-        return "";
+        int row = this.table.getSelectionModel().getLeadSelectionIndex();
+        int column = this.table.getColumnModel().getSelectionModel().getLeadSelectionIndex();
+        return (String) this.table.getModel().getValueAt(row, column);
     }
+    
 }

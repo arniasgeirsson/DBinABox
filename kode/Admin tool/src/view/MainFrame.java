@@ -15,7 +15,7 @@ public class MainFrame extends JFrame
     private TabPanel tabPanel;
     private JPanel windowPanel;
     private ExecuteSQLDialog dialog;
-    
+    private JPanel currentShowingPanel;
     
     private static MainFrame instance;
     
@@ -113,7 +113,8 @@ public class MainFrame extends JFrame
     {
         this.windowPanel.removeAll();
         model.TabManager tabManager = model.TabManager.getInstance();
-        this.windowPanel.add(tabManager.getActiveTab().getActivePanel());
+        this.currentShowingPanel = tabManager.getActiveTab().getActivePanel();
+        this.windowPanel.add(this.currentShowingPanel);
         this.validate();
         this.repaint();
     }
@@ -160,5 +161,11 @@ public class MainFrame extends JFrame
     public ExecuteSQLDialog getExecuteSQLDialog()
     {
         return this.dialog;
+    }
+    
+    public String getSelectedTableName()
+    {
+        TablePanel tablePanel =  (TablePanel) this.currentShowingPanel;
+        return tablePanel.getSelectedTablename();
     }
 }

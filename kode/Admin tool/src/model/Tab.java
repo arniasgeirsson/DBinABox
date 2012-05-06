@@ -8,6 +8,7 @@ public class Tab
     
     private boolean tableView;
     private boolean dataView;
+    private String tableName;
     
     public Tab(Login theLogin)
     {
@@ -32,13 +33,18 @@ public class Tab
         this.dataView = true;  
     }
     
+    public void setTableName(String tableName)
+    {
+        this.tableName = tableName;
+    }
+    
     public JPanel getActivePanel()
     {
         SQLManager sqlManager = SQLManager.getInstance();
         if (this.tableView)
             return new view.TablePanel(sqlManager.getAllTables(this));
         if (this.dataView)
-            return new view.DataViewPanel(sqlManager.getAllData(this, "NW_ORDER"), sqlManager.getColumnNames(this, "NW_ORDER"));
+            return new view.DataViewPanel(sqlManager.getAllData(this, this.tableName), sqlManager.getColumnNames(this, this.tableName));
         
         return null;
     }
