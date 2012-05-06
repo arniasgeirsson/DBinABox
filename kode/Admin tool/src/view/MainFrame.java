@@ -17,6 +17,9 @@ public class MainFrame extends JFrame
     private ExecuteSQLDialog dialog;
     private JPanel currentShowingPanel;
     
+    private JButton btnOpenTable;
+    private JButton btnCloseTable;
+    
     private static MainFrame instance;
     
     public static MainFrame getInstance(){
@@ -44,10 +47,14 @@ public class MainFrame extends JFrame
         btnExecuteSql.addActionListener(new controller.OpenExecuteListener());
         contentPane.add(btnExecuteSql);
         
-        JButton btnOpen = new JButton("Open");
-        btnOpen.setBounds(624, 122, 120, 40);
-        btnOpen.addActionListener(new controller.OpenListener());
-        contentPane.add(btnOpen);
+        this.btnOpenTable = new JButton("Open Table");
+        btnOpenTable.setBounds(624, 122, 120, 40);
+        btnOpenTable.addActionListener(new controller.OpenTableListener());
+        contentPane.add(btnOpenTable);
+        
+        this.btnCloseTable = new JButton("Close Table");
+        btnCloseTable.setBounds(624, 122, 120, 40);
+        btnCloseTable.addActionListener(new controller.CloseTableListener());
         
         JButton btnPushImage = new JButton("Push image");
         btnPushImage.setBounds(624, 183, 120, 40);
@@ -115,6 +122,18 @@ public class MainFrame extends JFrame
         model.TabManager tabManager = model.TabManager.getInstance();
         this.currentShowingPanel = tabManager.getActiveTab().getActivePanel();
         this.windowPanel.add(this.currentShowingPanel);
+        
+        // dårlig løsning?
+        if (this.currentShowingPanel.getClass() == view.TablePanel.class)
+        {
+            this.getContentPane().remove(this.btnCloseTable);
+            this.getContentPane().add(this.btnOpenTable);
+        } else if (this.currentShowingPanel.getClass() == view.DataViewPanel.class)
+        {
+            this.getContentPane().add(this.btnCloseTable);
+            this.getContentPane().remove(this.btnOpenTable);
+        }
+        
         this.validate();
         this.repaint();
     }
