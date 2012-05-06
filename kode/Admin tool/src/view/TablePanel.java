@@ -19,7 +19,7 @@ public class TablePanel extends JPanel
         this.setBounds(0, 0, 600, 455);
         table = new JTable();
         table.setModel(new DefaultTableModel(tables, new String[] {"Tables"}));
-        
+
         JScrollPane pane = new JScrollPane(this.table);
         pane.setBounds(0, 30, 600, 405);
 
@@ -27,5 +27,10 @@ public class TablePanel extends JPanel
         JLabel lblNewLabel = new JLabel("List of all Tables (attributes)");
         lblNewLabel.setBounds(0, 0, 600, 30);
         add(lblNewLabel);
+    }
+    
+    public String getSelectedTablename()
+    {
+        return "";
     }
 }

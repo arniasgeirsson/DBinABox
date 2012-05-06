@@ -13,7 +13,7 @@ public class DataViewPanel extends JPanel
     /**
      * Create the panel.
      */
-    public DataViewPanel()
+    public DataViewPanel(Object[][] allData, String[] attributes)
     {
         setLayout(null);
         this.setBounds(0, 0, 600, 455);
@@ -23,18 +23,9 @@ public class DataViewPanel extends JPanel
         add(lblAllDataOf);
         
         table = new JTable();
-        table.setModel(new DefaultTableModel(
-            new Object[][] {
-                {1, 2, "Test"},
-                {4, null, "assa"},
-                {null, null, null},
-                {null, 5, null},
-                {"123", null, null},
-            },
-            new String[] {
-                "New column", "New column", "New column"
-            }
-        ));
+        table.setModel(new DefaultTableModel(allData, attributes));
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
         JScrollPane pane = new JScrollPane(this.table);
         pane.setBounds(0, 30, 600, 405);
 

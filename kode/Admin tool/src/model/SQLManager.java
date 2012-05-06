@@ -59,4 +59,104 @@ public class SQLManager
         }
         return null;        
     }
+    
+    public Object[][] getAllData(Tab tab, String tableName)
+    {
+        Connection conn;
+        int port = 1521;
+        Login login = tab.getLogin();
+        
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conn = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+            conn.setAutoCommit(false);
+            
+            String query = "SELECT * FROM "+tableName;
+            PreparedStatement stm = conn.prepareStatement(query);
+//            stm.setString(1, tableName);
+            ResultSet resultset = stm.executeQuery();
+            
+            ArrayList<ArrayList<Object>> temp = new ArrayList<ArrayList<Object>>();
+            while (resultset.next())
+            {
+                int index = 1;
+                ArrayList<Object> temp2 = new ArrayList<Object>();
+                while (true)
+                {
+                    try
+                    {
+                        String data = resultset.getString(index);
+                        if (data == null)
+                            data = "Null";
+                        temp2.add(data);
+                        index++;
+                    } catch(SQLException e) {
+                        System.out.println(e);
+                        break;
+                    }
+                }
+                temp.add(temp2);
+            }
+            conn.close();
+                
+            Object[][] allData = new Object[temp.size()][temp.get(0).size()];
+            for (int i = 0; i < temp.size(); i++)
+            {
+                for (int y = 0; y < temp.get(i).size(); y++)
+                {
+                    allData[i][y] = temp.get(i).get(y);
+                }
+            }
+            
+            return allData;
+    
+        } catch(SQLException e) {
+            System.out.println(e);
+        } catch(ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return null;        
+    }
+    
+    public String[] getColumnNames(Tab tab, String tableName)
+    {
+        Connection conn;
+        int port = 1521;
+        Login login = tab.getLogin();
+        
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conn = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+            conn.setAutoCommit(false);
+            
+            String query = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
+            PreparedStatement stm = conn.prepareStatement(query);
+            stm.setString(1, tableName);
+            ResultSet resultset = stm.executeQuery();
+            
+            ArrayList<String> temp = new ArrayList<String>();
+            while(resultset.next())
+            {
+                temp.add(resultset.getString(1));
+            }
+            
+            conn.close();
+                
+            String[] tableNames = new String[temp.size()];
+            for (int i = 0; i < temp.size(); i++)
+            {
+                tableNames[i] = temp.get(i);
+            }
+            
+            return tableNames;
+    
+        } catch(SQLException e) {
+            System.out.println(e);
+        } catch(ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 }

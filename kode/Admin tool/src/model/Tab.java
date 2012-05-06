@@ -34,10 +34,11 @@ public class Tab
     
     public JPanel getActivePanel()
     {
+        SQLManager sqlManager = SQLManager.getInstance();
         if (this.tableView)
-            return new view.TablePanel(SQLManager.getInstance().getAllTables(this));
+            return new view.TablePanel(sqlManager.getAllTables(this));
         if (this.dataView)
-            return new view.DataViewPanel();
+            return new view.DataViewPanel(sqlManager.getAllData(this, "NW_ORDER"), sqlManager.getColumnNames(this, "NW_ORDER"));
         
         return null;
     }
