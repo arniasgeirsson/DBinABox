@@ -91,13 +91,17 @@ public class SQLManager
                         index++;
                     } catch(SQLException e) {
                         System.out.println(e);
+                        // dårlig løsning?
                         break;
                     }
                 }
                 temp.add(temp2);
             }
             conn.close();
-                
+            
+            if (temp.size() < 1)
+                return null;
+            
             Object[][] allData = new Object[temp.size()][temp.get(0).size()];
             for (int i = 0; i < temp.size(); i++)
             {
