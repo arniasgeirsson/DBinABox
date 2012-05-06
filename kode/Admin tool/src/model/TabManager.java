@@ -29,10 +29,10 @@ public class TabManager
         return TabManager.instance;
     }
     
-    public boolean addTab(String username, String password, String url, int port){
+    public boolean addTab(String username, String password, String port, String url){
         Login login = new Login();
         
-        if(login.tryLogin(username, password)){
+        if(login.tryLogin(username, password, port, url)){
             key++;
             this.tabs.put(key, login);
             

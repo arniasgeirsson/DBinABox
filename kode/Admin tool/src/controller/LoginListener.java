@@ -13,7 +13,7 @@ public class LoginListener implements ActionListener
         view.LoginFrame loginFrame = mainManager.getCurrentLoginFrame();
         model.TabManager tabs = model.TabManager.getInstance();
         
-        if (tabs.addTab(loginFrame.getUsername(), loginFrame.getPassword(), "", 0))
+        if (tabs.addTab(loginFrame.getUsername(), loginFrame.getPassword(), loginFrame.getPort(), loginFrame.getURL()))
         {
             mainManager.addTab();
         } else {

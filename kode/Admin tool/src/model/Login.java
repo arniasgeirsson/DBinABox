@@ -17,10 +17,9 @@ public class Login
         
     }
        
-    public boolean tryLogin(String id, String password)
+    public boolean tryLogin(String id, String password, String port, String url)
     {
         Connection conn;
-        int port = 1521;
         
         try 
         {
@@ -31,6 +30,8 @@ public class Login
             
             this.username = id;
             this.password = password;
+            this.port = port;
+            this.URL = url;
             
             conn.close();
             return true;
@@ -55,5 +56,15 @@ public class Login
     
     public String getPassword(){
         return this.password;
+    }
+    
+    public String getPort()
+    {
+        return this.port;
+    }
+    
+    public String getURL()
+    {
+        return this.URL;
     }
 }

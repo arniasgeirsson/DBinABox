@@ -20,13 +20,12 @@ public class SQLManager
     public String[][] getAllTables(Tab tab)
         {
         Connection conn;
-        int port = 1521;
         Login login = tab.getLogin();
         
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             conn.setAutoCommit(false);
             
             String query = "SELECT TABLE_NAME FROM ALL_TABLES";
@@ -63,13 +62,12 @@ public class SQLManager
     public Object[][] getAllData(Tab tab, String tableName)
     {
         Connection conn;
-        int port = 1521;
         Login login = tab.getLogin();
         
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             conn.setAutoCommit(false);
             
             String query = "SELECT * FROM "+tableName;
@@ -122,13 +120,12 @@ public class SQLManager
     public String[] getColumnNames(Tab tab, String tableName)
     {
         Connection conn;
-        int port = 1521;
         Login login = tab.getLogin();
         
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             conn.setAutoCommit(false);
             
             String query = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
@@ -163,13 +160,12 @@ public class SQLManager
     public void ExecuteSql(Tab tab, String query)
     {
         Connection conn;
-        int port = 1521;
         Login login = tab.getLogin();
         
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+port+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             conn.setAutoCommit(false);
             
             PreparedStatement stm = conn.prepareStatement(query);

@@ -92,4 +92,14 @@ public class LoginFrame extends JFrame
     public String getUsername(){
         return this.username.getText();
     }
+    
+    public String getPort()
+    {
+        return this.port.getText();
+    }
+    
+    public String getURL()
+    {
+        return this.url.getText();
+    }
 }
