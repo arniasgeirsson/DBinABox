@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class HistorikPanel extends JPanel
 {
@@ -11,7 +12,7 @@ public class HistorikPanel extends JPanel
     /**
      * Create the panel.
      */
-    public HistorikPanel()
+    public HistorikPanel(ArrayList<String> allMessages)
     {
         setBackground(Color.BLACK);
         this.setBounds(0, 0, 600, 455);
@@ -24,7 +25,5 @@ public class HistorikPanel extends JPanel
         lblHistorik.setBackground(Color.YELLOW);
         lblHistorik.setBounds(0, 0, 600, 30);
         add(lblHistorik);
-
     }
-
 }
