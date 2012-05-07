@@ -1,10 +1,5 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-
 public class Login
 {
     private String username;
@@ -17,37 +12,14 @@ public class Login
         
     }
        
-    public boolean tryLogin(String id, String password, String port, String url)
+    public boolean tryLogin(String username, String password, String port, String url)
     {
-        Connection conn;
+        this.username = username;
+        this.password = password;
+        this.port = port;
+        this.URL = url;
         
-        try 
-        {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:"+port+":xe", 
-                                               id, password);
-            conn.setAutoCommit(false);
-            
-            this.username = id;
-            this.password = password;
-            this.port = port;
-            this.URL = url;
-            
-            conn.close();
-            return true;
-        } 
-        
-        catch(SQLException e)
-        {
-            System.out.println(e);
-        }
-        
-        catch(ClassNotFoundException e)
-        {
-            System.out.println(e);
-        }
-        
-        return false;
+        return SQLManager.getInstance().tryToLogin(username, password, port, url);
     }
     
     public String getUsername(){

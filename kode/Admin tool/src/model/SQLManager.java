@@ -183,4 +183,32 @@ public class SQLManager
             System.out.println(e);
         }
     }
+    
+    public boolean tryToLogin(String username, String password, String port, String url)
+    {
+        Connection conn;
+        
+        try 
+        {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:"+port+":xe", 
+                                               username, password);
+            conn.setAutoCommit(false);
+            
+            conn.close();
+            return true;
+        } 
+        
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+        
+        catch(ClassNotFoundException e)
+        {
+            System.out.println(e);
+        }
+        
+        return false;
+    }
 }

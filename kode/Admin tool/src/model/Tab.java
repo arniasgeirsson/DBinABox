@@ -24,13 +24,13 @@ public class Tab
     public void switchToTableView()
     {
         this.tableView = true;
-        this.dataView = false;  
+        this.dataView = false;
     }
     
     public void switchToDataView()
     {
         this.tableView = false;
-        this.dataView = true;  
+        this.dataView = true;
     }
     
     public void setTableName(String tableName)

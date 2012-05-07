@@ -50,7 +50,7 @@ public class TabManager
     public void removeActiveTab()
     {
         this.allTabs.remove(this.activeTab);
-        if (this.activeTab > this.allTabs.size())
+        if (this.activeTab >= this.allTabs.size())
             this.activeTab--;
     }
     
