@@ -2,12 +2,12 @@ package view;
 
 import javax.swing.JButton;
 
-public class PaneButton extends JButton
+public class TabButton extends JButton
 {
     /**
      * Creates a new paneButton with no title
      */
-    public PaneButton()
+    public TabButton()
     {
         super();
     }
@@ -16,7 +16,7 @@ public class PaneButton extends JButton
      * Creates a new paneButton with the desired title
      * @param title the desired title
      */
-    public PaneButton(String title)
+    public TabButton(String title)
     {
         super(title);
     }
