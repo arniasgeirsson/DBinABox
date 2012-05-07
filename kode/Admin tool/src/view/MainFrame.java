@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,7 +21,11 @@ public class MainFrame extends JFrame
     
     private JButton btnOpenTable;
     private JButton btnCloseTable;
+    private boolean isHistorikActive;
+    private JButton btnHistorik;
     
+    private ArrayList<String> allMessages;
+
     private static MainFrame instance;
     
     public static MainFrame getInstance(){
@@ -70,8 +76,9 @@ public class MainFrame extends JFrame
         contentPane.add(txtHistorikLine);
         txtHistorikLine.setColumns(10);
         
-        JButton btnHistorik = new JButton("UP");
+        this.btnHistorik = new JButton("UP");
         btnHistorik.setBounds(589, 527, 20, 24);
+        this.btnHistorik.addActionListener(new controller.HistorikListener());
         contentPane.add(btnHistorik);
         
         JButton btnBack = new JButton("Back");
@@ -97,6 +104,8 @@ public class MainFrame extends JFrame
         btnLogOut.addActionListener(new controller.LogOutListener());
         contentPane.add(btnLogOut);
         
+        this.allMessages = new ArrayList<String>();
+        this.isHistorikActive = false;
         this.updateWindowPanel();
     }
     
@@ -155,14 +164,17 @@ public class MainFrame extends JFrame
     public void openHistorik()
     {
         this.windowPanel.removeAll();
-        this.windowPanel.add(new HistorikPanel());
+        this.windowPanel.add(new HistorikPanel(this.allMessages));
+        this.isHistorikActive = true;
+        this.btnHistorik.setText("D");
         this.validate();
         this.repaint();
     }
     
     public void closeHistorik()
     {
-        this.windowPanel.removeAll();
+        this.isHistorikActive = false;
+        this.btnHistorik.setText("U");
         this.updateWindowPanel();
     }
     
@@ -186,5 +198,15 @@ public class MainFrame extends JFrame
     {
         TablePanel tablePanel =  (TablePanel) this.currentShowingPanel;
         return tablePanel.getSelectedTablename();
+    }
+    
+    public boolean isHistorikActive()
+    {
+        return this.isHistorikActive;
+    }
+    
+    public void addMessage(String message)
+    {
+        this.allMessages.add(message);
     }
 }

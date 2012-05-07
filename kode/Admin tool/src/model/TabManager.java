@@ -1,24 +1,15 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class TabManager
 {
     private static TabManager instance;
-    private HashMap<Integer, Login> tabs;
-    private int key;
-    
-    
     private ArrayList<Tab> allTabs;
     private int activeTab;
     
     
     private TabManager(){
-        this.tabs = new HashMap<Integer, Login>();
-        this.key = 0;
-        
-        
         this.activeTab = -1;
         this.allTabs = new ArrayList<Tab>();
     }
@@ -33,13 +24,8 @@ public class TabManager
         Login login = new Login();
         
         if(login.tryLogin(username, password, port, url)){
-            key++;
-            this.tabs.put(key, login);
-            
-            
             this.allTabs.add(new Tab(login));
             this.activeTab++;
-            
             
             return true;
         }
@@ -52,14 +38,6 @@ public class TabManager
         this.allTabs.remove(this.activeTab);
         if (this.activeTab >= this.allTabs.size())
             this.activeTab--;
-    }
-    
-    public int getKey(){
-        return this.key;
-    }
-    
-    public Login getLogin(int tab){
-        return this.tabs.get(tab);
     }
     
     public void switchTab(int nextSelectedTab)

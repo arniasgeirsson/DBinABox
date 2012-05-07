@@ -161,7 +161,7 @@ public class SQLManager
         return null;
     }
     
-    public void ExecuteSql(Tab tab, String query)
+    public void executeSql(Tab tab, String query)
     {
         Connection conn;
         Login login = tab.getLogin();
