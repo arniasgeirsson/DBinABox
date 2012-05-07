@@ -11,19 +11,21 @@ public class SQLManager
 {
     private static SQLManager instance;
 
+    private SQLManager()
+    {
+        
+    }
+    
     public static SQLManager getInstance(){
         if (SQLManager.instance == null)
             SQLManager.instance = new SQLManager();
         return SQLManager.instance;
     }
-
-    public String[][] getAllTables(Tab tab)
-        {
+    
+    private Connection openConnection(Login login)
+    {
         Connection conn;
-        Login login = tab.getLogin();
-        
         try {
-            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
@@ -31,6 +33,35 @@ public class SQLManager
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
             */
+            return conn;
+        } catch(SQLException e) {
+            System.out.println(e);
+        } catch(ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        
+        return null;
+    }
+    
+    private void closeConnection(Connection conn)
+    {
+        try
+        {
+            conn.close();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public String[][] getAllTables(Tab tab)
+        {
+        Connection conn = this.openConnection(tab.getLogin());
+        if (conn == null)
+            return null;
+        
+        try {
             conn.setAutoCommit(false);
             
             String query = "SELECT TABLE_NAME FROM ALL_TABLES";
@@ -47,8 +78,8 @@ public class SQLManager
                 temp.add(name);
             }
             
-            conn.close();
-                
+            this.closeConnection(conn);
+            
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)
             {
@@ -59,27 +90,18 @@ public class SQLManager
 
         } catch(SQLException e) {
             System.out.println(e);
-        } catch(ClassNotFoundException e) {
-            System.out.println(e);
         }
+        
         return null;        
     }
     
     public Object[][] getAllData(Tab tab, String tableName)
     {
-        Connection conn;
-        Login login = tab.getLogin();
+        Connection conn = this.openConnection(tab.getLogin());
+        if (conn == null)
+            return null;
         
         try {
-            
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
-            
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
-            */
             conn.setAutoCommit(false);
             
             String query = "SELECT * FROM "+tableName;
@@ -109,7 +131,8 @@ public class SQLManager
                 }
                 temp.add(temp2);
             }
-            conn.close();
+            
+            this.closeConnection(conn);
             
             if (temp.size() < 1)
                 return null;
@@ -127,29 +150,17 @@ public class SQLManager
     
         } catch(SQLException e) {
             System.out.println(e);
-        } catch(ClassNotFoundException e) {
-            System.out.println(e);
         }
         return null;        
     }
     
     public String[] getColumnNames(Tab tab, String tableName)
     {
-        Connection conn;
-        Login login = tab.getLogin();
+        Connection conn = this.openConnection(tab.getLogin());
+        if (conn == null)
+            return null;
         
         try {
-            
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
-            
-           
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
-            */
-            
             conn.setAutoCommit(false);
             
             String query = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
@@ -163,7 +174,7 @@ public class SQLManager
                 temp.add(resultset.getString(1));
             }
             
-            conn.close();
+            this.closeConnection(conn);
                 
             String[] tableNames = new String[temp.size()];
             for (int i = 0; i < temp.size(); i++)
@@ -175,72 +186,34 @@ public class SQLManager
     
         } catch(SQLException e) {
             System.out.println(e);
-        } catch(ClassNotFoundException e) {
-            System.out.println(e);
         }
         return null;
     }
     
     public void executeSql(Tab tab, String query)
     {
-        Connection conn;
-        Login login = tab.getLogin();
+        Connection conn = this.openConnection(tab.getLogin());
+        if (conn == null)
+            return;
         
         try {
-            
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
-            
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
-            */
-            
             conn.setAutoCommit(false);
             
             PreparedStatement stm = conn.prepareStatement(query);
             stm.executeQuery();
             conn.commit();
-            conn.close();
+            this.closeConnection(conn);
                 
         } catch(SQLException e) {
-            System.out.println(e);
-        } catch(ClassNotFoundException e) {
             System.out.println(e);
         }
     }
     
-    public boolean tryToLogin(String username, String password, String port, String url)
+    public boolean tryToLogin(Login login)
     {
-        Connection conn;
-        
-        try 
-        {
-            
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:"+port+":xe", 
-                                               username, password);
-            
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
-            */
-            conn.setAutoCommit(false);
-            
-            conn.close();
+        Connection conn = this.openConnection(login);
+        if (conn != null)
             return true;
-        } 
-        
-        catch(SQLException e)
-        {
-            System.out.println(e);
-        }
-        
-        catch(ClassNotFoundException e)
-        {
-            System.out.println(e);
-        }
         
         return false;
     }
