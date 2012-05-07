@@ -23,12 +23,18 @@ public class SQLManager
         Login login = tab.getLogin();
         
         try {
+            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+            /*
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
+            */
             conn.setAutoCommit(false);
             
             String query = "SELECT TABLE_NAME FROM ALL_TABLES";
+//            String query = "show databases";
             PreparedStatement stm = conn.prepareStatement(query);
             
             ResultSet resultset = stm.executeQuery();
@@ -65,9 +71,15 @@ public class SQLManager
         Login login = tab.getLogin();
         
         try {
+            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+            
+            /*
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
+            */
             conn.setAutoCommit(false);
             
             String query = "SELECT * FROM "+tableName;
@@ -127,9 +139,17 @@ public class SQLManager
         Login login = tab.getLogin();
         
         try {
+            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+            
+           
+            /*
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
+            */
+            
             conn.setAutoCommit(false);
             
             String query = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
@@ -167,9 +187,16 @@ public class SQLManager
         Login login = tab.getLogin();
         
         try {
+            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+            
+            /*
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/World", "root", "Arniermysql");
+            */
+            
             conn.setAutoCommit(false);
             
             PreparedStatement stm = conn.prepareStatement(query);
@@ -190,9 +217,15 @@ public class SQLManager
         
         try 
         {
+            
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:"+port+":xe", 
                                                username, password);
+            
+            /*
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
+            */
             conn.setAutoCommit(false);
             
             conn.close();
