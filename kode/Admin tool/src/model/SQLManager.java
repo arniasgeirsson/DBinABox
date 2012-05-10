@@ -26,7 +26,7 @@ public class SQLManager
             
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:SYSTEM@//192.168.19.57:"+login.getPort()+"/xe", login.getUsername(), login.getPassword());
             /*
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
@@ -48,7 +48,8 @@ public class SQLManager
             }
             
             conn.close();
-                
+            System.out.println(temp.size());
+
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)
             {
@@ -74,7 +75,7 @@ public class SQLManager
             
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:SYSTEM@//192.168.19.57:"+login.getPort()+"/xe", login.getUsername(), login.getPassword());
             
             /*
             Class.forName("com.mysql.jdbc.Driver");
@@ -142,7 +143,7 @@ public class SQLManager
             
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:SYSTEM@//192.168.19.57:"+login.getPort()+"/xe", login.getUsername(), login.getPassword());
             
            
             /*
@@ -219,7 +220,7 @@ public class SQLManager
         {
             
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:"+port+":xe", 
+            conn = DriverManager.getConnection("jdbc:oracle:thin:SYSTEM@//192.168.19.57:"+port+"/xe", 
                                                username, password);
             
             /*
