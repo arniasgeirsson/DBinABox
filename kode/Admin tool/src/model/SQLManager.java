@@ -6,22 +6,44 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * 
+ *
+ * @param  url  an absolute URL giving the base location of the image
+ * @param  name the location of the image, relative to the url argument
+ * @return      the image at the specified URL
+ * @see         Image
+ */
 public class SQLManager
 {
     private static SQLManager instance;
 
+    /**
+     * Constructor, initiates a SQLManager object.
+     */
     private SQLManager()
     {
         
     }
     
+    /**
+     * The SQLManager is a singleton, therefore getInstance returns
+     * the SQLManager singleton.
+     */
     public static SQLManager getInstance(){
         if (SQLManager.instance == null)
             SQLManager.instance = new SQLManager();
         return SQLManager.instance;
     }
     
+    /**
+     * openConnections tries to establish a connection to the
+     * desired database.
+     *
+     * @param login it holds the specific login data from the user
+     * @return      the connection to the database
+     * @return      null: when no connection can be made        
+     */
     private Connection openConnection(Login login)
     {
         Connection conn;
@@ -43,6 +65,11 @@ public class SQLManager
         return null;
     }
     
+    /**
+     * This method closes a given connection
+     *
+     * @param conn  the desired connection to be closed
+     */
     private void closeConnection(Connection conn)
     {
         try
@@ -54,7 +81,13 @@ public class SQLManager
         }
     }
     
-    
+    /**
+     * This method fetches all the table names from a database
+     *
+     * @param  tab  the tab that contains the specific login information
+     * @return      2d array with all the tablenames
+     * @return      null: when an error happens
+     */
     public String[][] getAllTables(Tab tab)
         {
         Connection conn = this.openConnection(tab.getLogin());
@@ -95,6 +128,14 @@ public class SQLManager
         return null;        
     }
     
+    /**
+     * getAllData fetches all the data in a given table
+     * 
+     * @param  tab       the tab that contains the specific login information
+     * @param  tableName the name of the specific table
+     * @return           all the data given in a 2d array of objects
+     * @return           null: when an error happens
+     */
     public Object[][] getAllData(Tab tab, String tableName)
     {
         Connection conn = this.openConnection(tab.getLogin());
@@ -154,6 +195,14 @@ public class SQLManager
         return null;        
     }
     
+    /**
+     * This method returns all the column names of a given table
+     *
+     * @param  tab       the tab that contains the specific login information
+     * @param  tableName the name of the specific table
+     * @return           an array containing the column names
+     * @return           null: when an error happens
+     */
     public String[] getColumnNames(Tab tab, String tableName)
     {
         Connection conn = this.openConnection(tab.getLogin());
@@ -190,6 +239,12 @@ public class SQLManager
         return null;
     }
     
+    /**
+     * executeSql performs a SQL statement on a specific database
+     *
+     * @param  tab   the tab that contains the specific login information
+     * @param  query the specific query to be executed
+     */
     public void executeSql(Tab tab, String query)
     {
         Connection conn = this.openConnection(tab.getLogin());
@@ -209,6 +264,13 @@ public class SQLManager
         }
     }
     
+    /**
+     * Determines if a connection can be made to a database with
+     * the given login information
+     * 
+     * @param login it holds the specific login data from the user
+     * @return      whether or not a connection can be established 
+     */
     public boolean tryToLogin(Login login)
     {
         Connection conn = this.openConnection(login);
