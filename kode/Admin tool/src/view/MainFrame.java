@@ -81,16 +81,8 @@ public class MainFrame extends JFrame
         this.btnHistorik.addActionListener(new controller.HistorikListener());
         contentPane.add(btnHistorik);
         
-        JButton btnBack = new JButton("Back");
-        btnBack.setBounds(10, 11, 50, 40);
-        contentPane.add(btnBack);
-        
-        JButton btnForward = new JButton("Forward");
-        btnForward.setBounds(70, 11, 50, 40);
-        contentPane.add(btnForward);
-        
         this.tabPanel = new TabPanel();
-        tabPanel.setBounds(130, 11, 480, 40);
+        tabPanel.setBounds(10, 11, 600, 40);
         contentPane.add(tabPanel);
         
         this.windowPanel = new JPanel();

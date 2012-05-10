@@ -19,7 +19,7 @@ public class Login
         this.port = port;
         this.URL = url;
         
-        return SQLManager.getInstance().tryToLogin(username, password, port, url);
+        return SQLManager.getInstance().tryToLogin(this);
     }
     
     public String getUsername(){

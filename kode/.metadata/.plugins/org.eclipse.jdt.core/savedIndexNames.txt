@@ -6,7 +6,6 @@ INDEX VERSION 1.126+C:\Users\Peter\DBinABox\kode\.metadata\.plugins\org.eclipse.
 1115467115.index
 163172794.index
 1722736487.index
-3466354310.index
 4155206848.index
 1498219845.index
 3974580528.index
