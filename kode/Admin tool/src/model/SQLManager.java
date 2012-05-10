@@ -7,12 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 /**
- * 
- *
- * @param  url  an absolute URL giving the base location of the image
- * @param  name the location of the image, relative to the url argument
- * @return      the image at the specified URL
- * @see         Image
+ * The SQLManager class works as an manager for all the sql statements and database
+ * connections that needs to be handled.
  */
 public class SQLManager
 {
