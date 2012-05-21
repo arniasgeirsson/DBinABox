@@ -3,11 +3,12 @@ package model;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
 
 public class MainManager
 {
     private view.LoginFrame currentLoginFrame;
+    private boolean wrongLogin;
+    
     private static MainManager instance;
     
     public static MainManager getInstance(){
@@ -56,15 +57,6 @@ public class MainManager
      */
     public static void main(String[] args)
     {
-        try {
-            // Set cross-platform Java L&F (also called "Metal")
-            UIManager.setLookAndFeel(
-                "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } 
-        catch (Exception e) {
-           // handle exception
-        }
-        
         EventQueue.invokeLater(new Runnable()
         {
             public void run()

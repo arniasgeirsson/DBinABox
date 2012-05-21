@@ -8,6 +8,8 @@ import javax.swing.UIManager;
 public class MainManager
 {
     private view.LoginFrame currentLoginFrame;
+    private boolean wrongLogin;
+    
     private static MainManager instance;
     
     public static MainManager getInstance(){

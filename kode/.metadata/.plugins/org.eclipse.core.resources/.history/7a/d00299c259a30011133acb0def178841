@@ -46,7 +46,7 @@ public class SQLManager
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@"login.getURL()":"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             /*
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");

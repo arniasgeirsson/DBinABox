@@ -99,9 +99,9 @@ public class MainFrame extends JFrame
         this.updateWindowPanel();
     }
     
-    public void addTab(String name)
+    public void addTab()
     {
-        this.tabPanel.addNewTab(name);
+        this.tabPanel.addNewTab();
         this.updateWindowPanel();
     }
     
