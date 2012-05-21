@@ -21,6 +21,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -36,17 +37,20 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SQLManager.java" partName="SQLManager.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/model/SQLManager.java" title="SQLManager.java" tooltip="Admin tool/src/model/SQLManager.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SQLManager.java" partName="SQLManager.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/model/SQLManager.java" title="SQLManager.java" tooltip="Admin tool/src/model/SQLManager.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/model/SQLManager.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8738" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1408" selectionTopPixel="428"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExecuteSQLDialog.java" partName="ExecuteSQLDialog.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/view/ExecuteSQLDialog.java" title="ExecuteSQLDialog.java" tooltip="Admin tool/src/view/ExecuteSQLDialog.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExecuteSQLDialog.java" partName="ExecuteSQLDialog.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/view/ExecuteSQLDialog.java" title="ExecuteSQLDialog.java" tooltip="Admin tool/src/view/ExecuteSQLDialog.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/view/ExecuteSQLDialog.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1701" selectionTopPixel="315"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="968" selectionTopPixel="285"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainManager.java" partName="MainManager.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/model/MainManager.java" title="MainManager.java" tooltip="Admin tool/src/model/MainManager.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/model/MainManager.java"/>
@@ -59,6 +63,18 @@
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Login.java" partName="Login.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/model/Login.java" title="Login.java" tooltip="Admin tool/src/model/Login.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/model/Login.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="134"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DataViewPanel.java" partName="DataViewPanel.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/view/DataViewPanel.java" title="DataViewPanel.java" tooltip="Admin tool/src/view/DataViewPanel.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/view/DataViewPanel.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1038" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TablePanel.java" partName="TablePanel.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/view/TablePanel.java" title="TablePanel.java" tooltip="Admin tool/src/view/TablePanel.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/view/TablePanel.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="216" selectionOffset="441" selectionTopPixel="110"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainFrame.java" partName="MainFrame.java" path="C:/Users/Peter/DBinABox/kode/Admin tool/src/view/MainFrame.java" title="MainFrame.java" tooltip="Admin tool/src/view/MainFrame.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Admin tool/src/view/MainFrame.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5970" selectionTopPixel="2420"/>
 </editor>
 </editors>
 <views>
@@ -177,7 +193,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.69860893" ratioLeft="452" ratioRight="195" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottomRight" ratio="0.7925532" ratioLeft="596" ratioRight="156" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.AllMarkersView" label="Markers"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
@@ -217,7 +233,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/model/Edit.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/model/Login.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/HistorikPanel.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/DatabasePanel.java"/>
@@ -232,156 +247,161 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/model/Login.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/model/MainManager.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/model/SQLManager.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/DataViewPanel.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/TablePanel.java"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Admin tool/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;javax.swing(JTable.class"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/MainFrame.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Admin tool/src/view/ExecuteSQLDialog.java"/>
 </editors>
-<item historyLabel="TabManager.java" index="4">
-<position info="not_deleted" x="800" y="0"/>
-</item>
-<item historyLabel="TabManager.java" index="4">
-<position info="not_deleted" x="609" y="0"/>
-</item>
-<item historyLabel="TabManager.java" index="4">
-<position info="not_deleted" x="652" y="0"/>
-</item>
-<item historyLabel="TabManager.java" index="4">
-<position info="not_deleted" x="634" y="0"/>
-</item>
-<item historyLabel="Login.java" index="1">
-<position info="not_deleted" x="774" y="0"/>
-</item>
-<item historyLabel="Edit.java" index="0">
-<position info="not_deleted" x="128" y="0"/>
-</item>
-<item historyLabel="TabManager.java" index="4">
-<position info="not_deleted" x="634" y="0"/>
-</item>
-<item historyLabel="Login.java" index="1">
-<position info="not_deleted" x="774" y="0"/>
-</item>
-<item historyLabel="Login.java" index="1">
-<position info="not_deleted" x="1122" y="0"/>
-</item>
-<item historyLabel="Login.java" index="1">
-<position info="not_deleted" x="1200" y="0"/>
-</item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="1233" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="1233" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="634" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="HistorikPanel.java" index="2">
+<item historyLabel="HistorikPanel.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="DatabasePanel.java" index="3">
+<item historyLabel="DatabasePanel.java" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="634" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="722" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="728" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="913" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="955" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="946" y="1"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="Edit.java" index="5">
+<item historyLabel="Edit.java" index="4">
 <position info="not_deleted" x="362" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="Edit.java" index="5">
+<item historyLabel="Edit.java" index="4">
 <position info="not_deleted" x="362" y="0"/>
 </item>
-<item historyLabel="Edit.java" index="5">
+<item historyLabel="Edit.java" index="4">
 <position info="not_deleted" x="686" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="756" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="800" y="0"/>
 </item>
-<item historyLabel="MainFrame.java" index="6">
+<item historyLabel="MainFrame.java" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Login.java" index="1">
+<item historyLabel="Login.java" index="0">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="MainManager.java" index="7">
+<item historyLabel="MainManager.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TabManager.java" index="4">
+<item historyLabel="TabManager.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Login.java" index="8">
+<item historyLabel="Login.java" index="7">
 <position info="not_deleted" x="213" y="0"/>
 </item>
-<item historyLabel="SQLManager.java" index="9">
+<item historyLabel="SQLManager.java" index="8">
 <position info="not_deleted" x="812" y="0"/>
 </item>
-<item historyLabel="ExecuteSQLDialog.java" index="10">
+<item historyLabel="ExecuteSQLDialog.java" index="9">
 <position info="not_deleted" x="1701" y="0"/>
 </item>
-<item historyLabel="MainManager.java" index="7">
+<item historyLabel="MainManager.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="SQLManager.java" index="9">
+<item historyLabel="SQLManager.java" index="8">
 <position info="not_deleted" x="812" y="0"/>
 </item>
-<item historyLabel="SQLManager.java" index="9">
+<item historyLabel="SQLManager.java" index="8">
 <position info="not_deleted" x="591" y="0"/>
 </item>
-<item historyLabel="SQLManager.java" index="9">
+<item historyLabel="SQLManager.java" index="8">
 <position/>
 </item>
-<item historyLabel="Edit.java" index="11">
+<item historyLabel="Edit.java" index="10">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Login.java" index="12">
+<item historyLabel="Login.java" index="11">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="MainManager.java" index="13">
+<item historyLabel="MainManager.java" index="12">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="SQLManager.java" index="14">
+<item historyLabel="SQLManager.java" index="13">
 <position info="not_deleted" x="1699" y="0"/>
 </item>
-<item active="true" historyLabel="SQLManager.java" index="14">
+<item historyLabel="SQLManager.java" index="13">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="TablePanel.java" index="15">
+<position info="not_deleted" x="441" y="216"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="697" y="0"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="688" y="8"/>
+</item>
+<item historyLabel="JTable.class" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="688" y="8"/>
+</item>
+<item historyLabel="DataViewPanel.java" index="14">
+<position info="not_deleted" x="1038" y="0"/>
+</item>
+<item historyLabel="MainFrame.java" index="17">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="ExecuteSQLDialog.java" index="18">
+<position info="not_deleted" x="1505" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -401,6 +421,18 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainFrame.java" tooltip="Admin tool/src/view/MainFrame.java">
+<persistable path="/Admin tool/src/view/MainFrame.java"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="JTable.class" tooltip="javax.swing.JTable">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Admin tool/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;javax.swing(JTable.class"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TablePanel.java" tooltip="Admin tool/src/view/TablePanel.java">
+<persistable path="/Admin tool/src/view/TablePanel.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DataViewPanel.java" tooltip="Admin tool/src/view/DataViewPanel.java">
+<persistable path="/Admin tool/src/view/DataViewPanel.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Login.java" tooltip="Admin tool/src/model/Login.java">
 <persistable path="/Admin tool/src/model/Login.java"/>
 </file>
@@ -415,9 +447,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SQLManager.java" tooltip="Admin tool/src/model/SQLManager.java">
 <persistable path="/Admin tool/src/model/SQLManager.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainFrame.java" tooltip="Admin tool/src/view/MainFrame.java">
-<persistable path="/Admin tool/src/view/MainFrame.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ButtonPanel.java" tooltip="Admin tool/src/view/ButtonPanel.java">
 <persistable path="/Admin tool/src/view/ButtonPanel.java"/>
@@ -436,9 +465,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TapManager.java" tooltip="Admin tool/src/model/TapManager.java">
 <persistable path="/Admin tool/src/model/TapManager.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DbChooser.java" tooltip="Admin tool/src/model/DbChooser.java">
-<persistable path="/Admin tool/src/model/DbChooser.java"/>
 </file>
 </mruList>
 </workbench>
