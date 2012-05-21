@@ -46,16 +46,17 @@ public class SQLManager
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@" + login.getURL() + ":"+login.getPort()+":xe", login.getUsername(), login.getPassword());
-
+                    "jdbc:oracle:thin:@ARNIA-PC:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
             /*
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
             */
             return conn;
         } catch(SQLException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         } catch(ClassNotFoundException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         }
         
@@ -74,6 +75,7 @@ public class SQLManager
             conn.close();
         } catch (SQLException e)
         {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -119,6 +121,7 @@ public class SQLManager
             return tableNames;
 
         } catch(SQLException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         }
         
@@ -187,6 +190,7 @@ public class SQLManager
             return allData;
     
         } catch(SQLException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         }
         return null;        
@@ -231,6 +235,7 @@ public class SQLManager
             return tableNames;
     
         } catch(SQLException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         }
         return null;
@@ -254,9 +259,11 @@ public class SQLManager
             PreparedStatement stm = conn.prepareStatement(query);
             stm.executeQuery();
             conn.commit();
+            model.MessageHandler.getInstance().addMessage("SQL executed perfectly!");
             this.closeConnection(conn);
                 
         } catch(SQLException e) {
+            model.MessageHandler.getInstance().addMessage(e.getMessage());
             System.out.println(e);
         }
     }
@@ -271,9 +278,10 @@ public class SQLManager
     public boolean tryToLogin(Login login)
     {
         Connection conn = this.openConnection(login);
-        if (conn != null)
-            return true;
+        if (conn == null)
+            return false;
         
-        return false;
+        model.MessageHandler.getInstance().addMessage("Login succesfull!");
+        return true;
     }
 }

@@ -25,8 +25,6 @@ public class MainFrame extends JFrame
     private boolean isHistorikActive;
     private JButton btnHistorik;
     
-    private ArrayList<String> allMessages;
-
     private static MainFrame instance;
     
     public static MainFrame getInstance(){
@@ -72,7 +70,7 @@ public class MainFrame extends JFrame
         contentPane.add(versionLabel);
         
         txtHistorikLine = new JTextField();
-        txtHistorikLine.setText("- Table \"Test1\" created");
+        txtHistorikLine.setText("");
         txtHistorikLine.setBounds(10, 527, 580, 24);
         contentPane.add(txtHistorikLine);
         txtHistorikLine.setColumns(10);
@@ -97,14 +95,13 @@ public class MainFrame extends JFrame
         btnLogOut.addActionListener(new controller.LogOutListener());
         contentPane.add(btnLogOut);
         
-        this.allMessages = new ArrayList<String>();
         this.isHistorikActive = false;
         this.updateWindowPanel();
     }
     
-    public void addTab(String name)
+    public void addTab()
     {
-        this.tabPanel.addNewTab(name);
+        this.tabPanel.addNewTab();
         this.updateWindowPanel();
     }
     
@@ -136,6 +133,8 @@ public class MainFrame extends JFrame
             this.getContentPane().remove(this.btnOpenTable);
         }
         
+        this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage());
+        
         this.validate();
         this.repaint();
     }
@@ -157,7 +156,7 @@ public class MainFrame extends JFrame
     public void openHistorik()
     {
         this.windowPanel.removeAll();
-        this.windowPanel.add(new HistorikPanel(this.allMessages));
+        this.windowPanel.add(new HistorikPanel(model.MessageHandler.getInstance().getAllMessage()));
         this.isHistorikActive = true;
         this.btnHistorik.setText("D");
         this.validate();
@@ -196,10 +195,5 @@ public class MainFrame extends JFrame
     public boolean isHistorikActive()
     {
         return this.isHistorikActive;
-    }
-    
-    public void addMessage(String message)
-    {
-        this.allMessages.add(message);
     }
 }

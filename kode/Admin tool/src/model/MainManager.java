@@ -3,8 +3,6 @@ package model;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class MainManager
 {
@@ -41,17 +39,17 @@ public class MainManager
         this.currentLoginFrame = loginFrame;
     }
     
-    public void addTab(String name)
+    public void addTab()
     {
         this.currentLoginFrame.setVisible(false);
         view.MainFrame mainFrame = view.MainFrame.getInstance();
         mainFrame.setVisible(true);
-        mainFrame.addTab(name);
+        mainFrame.addTab();
     }
     
     public void wrongLogin()
     {
-        this.currentLoginFrame.setWrongLoginInfo("Error - wrong login");
+        this.currentLoginFrame.setWrongLoginInfo(model.MessageHandler.getInstance().getNewestMessage());
     }
     
     /**
@@ -59,16 +57,6 @@ public class MainManager
      */
     public static void main(String[] args)
     {
-    
-        try {
-                // Set cross-platform Java L&F (also called "Metal")
-            UIManager.setLookAndFeel(
-                    "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } 
-        catch (Exception e) {
-           // handle exception
-        }
-                    
         EventQueue.invokeLater(new Runnable()
         {
             public void run()

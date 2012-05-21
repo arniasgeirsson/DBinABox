@@ -80,8 +80,8 @@ public class LoginFrame extends JFrame
         contentPane.add(url);
         
         this.lblWrongLoginInfo = new JLabel("");
-        lblWrongLoginInfo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblWrongLoginInfo.setBounds(161, 178, 235, 23);
+        lblWrongLoginInfo.setHorizontalAlignment(SwingConstants.LEFT);
+        lblWrongLoginInfo.setBounds(40, 178, 356, 39);
         contentPane.add(lblWrongLoginInfo);
     }
     
@@ -106,5 +106,6 @@ public class LoginFrame extends JFrame
     public void setWrongLoginInfo(String error)
     {
         this.lblWrongLoginInfo.setText(error);
+        this.lblWrongLoginInfo.setToolTipText(error);
     }
 }
