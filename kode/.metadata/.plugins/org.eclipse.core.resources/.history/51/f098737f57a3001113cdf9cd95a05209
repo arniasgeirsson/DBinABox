@@ -11,7 +11,7 @@ public class TabPanel extends JPanel
     private JButton btnNewTabButton;
     
     private int heightOfTabs = 40;
-    private int maxWidthOfTabs = 150;
+    private int maxWidthOfTabs = 80;
     private int minWidthOfTabs = 10;
     private int currentWidthOfTabs;
     

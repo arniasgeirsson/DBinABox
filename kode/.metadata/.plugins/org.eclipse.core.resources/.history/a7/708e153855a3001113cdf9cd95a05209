@@ -41,12 +41,12 @@ public class MainManager
         this.currentLoginFrame = loginFrame;
     }
     
-    public void addTab(String name)
+    public void addTab()
     {
         this.currentLoginFrame.setVisible(false);
         view.MainFrame mainFrame = view.MainFrame.getInstance();
         mainFrame.setVisible(true);
-        mainFrame.addTab(name);
+        mainFrame.addTab();
     }
     
     public void wrongLogin()
@@ -63,7 +63,7 @@ public class MainManager
         try {
                 // Set cross-platform Java L&F (also called "Metal")
             UIManager.setLookAndFeel(
-                    "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    "com.sun.java.swing.plaf.motif.MotifLookAndFeel");
         } 
         catch (Exception e) {
            // handle exception

@@ -46,8 +46,12 @@ public class SQLManager
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@" + login.getURL() + ":"+login.getPort()+":xe", login.getUsername(), login.getPassword());
-
+<<<<<<< HEAD
+//                    "jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM", "CarharttDatabase");
+                    "jdbc:oracle:thin:@localhost:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+=======
+                    "jdbc:oracle:thin:@ARNIA-PC:"+login.getPort()+":xe", login.getUsername(), login.getPassword());
+>>>>>>> 9d40b3ca2def35276752116afed91ed68983029a
             /*
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");

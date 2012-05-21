@@ -15,7 +15,7 @@ public class LoginListener implements ActionListener
         
         if (tabs.addTab(loginFrame.getUsername(), loginFrame.getPassword(), loginFrame.getPort(), loginFrame.getURL()))
         {
-            mainManager.addTab();
+            mainManager.addTab(loginFrame.getUsername() + " - " + loginFrame.getURL());
         } else {
             mainManager.wrongLogin();
         }

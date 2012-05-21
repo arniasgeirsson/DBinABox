@@ -41,12 +41,12 @@ public class MainManager
         this.currentLoginFrame = loginFrame;
     }
     
-    public void addTab(String name)
+    public void addTab()
     {
         this.currentLoginFrame.setVisible(false);
         view.MainFrame mainFrame = view.MainFrame.getInstance();
         mainFrame.setVisible(true);
-        mainFrame.addTab(name);
+        mainFrame.addTab();
     }
     
     public void wrongLogin()
