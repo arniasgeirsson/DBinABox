@@ -1,0 +1,33 @@
+b596755- AwsomeArni, Thu May 10 12:59:46 2012 +0200:Forgot the last javadoc..
+18c62ea- AwsomeArni, Thu May 10 12:54:56 2012 +0200:Added javadoc to the SQLManager class
+ea9f993- AwsomeArni, Mon May 7 16:19:33 2012 +0200:Removed the back & forward buttons and resized the tabpanel
+913aa27- AwsomeArni, Mon May 7 16:14:52 2012 +0200:Created openConnection and closeConnection methods in SQLManager
+2d8c5ed- AwsomeArni, Mon May 7 15:41:58 2012 +0200:Added mysql supportability
+4573d46- AwsomeArni, Mon May 7 13:43:04 2012 +0200:Created working historikbutton
+7689d3e- AwsomeArni, Mon May 7 11:43:23 2012 +0200:Fixed an issue when closing the last tab, and moved login-sql to SQLManager
+76c061d- AwsomeArni, Sun May 6 23:35:24 2012 +0200:Minor update: Dataview now shows the name of the opened table
+af75118- AwsomeArni, Sun May 6 23:23:41 2012 +0200:Fixed an issue in getAllData when the table had no tuples
+9f50247- AwsomeArni, Sun May 6 23:15:48 2012 +0200:Added the functionality of going back from dataview
+9994478- AwsomeArni, Sun May 6 19:57:50 2012 +0200:Now Open opens the user selected table
+8d31761- AwsomeArni, Sun May 6 16:52:15 2012 +0200:Made it so the user must input correct port (and url)
+cdaf003- AwsomeArni, Sun May 6 13:09:37 2012 +0200:Made the connection from ExecuteSQLDialog to SQLManager, allowing the user to execute sql
+c1f0765- AwsomeArni, Sun May 6 12:51:45 2012 +0200:Made dataviewpanel class fully functional and working
+376313e- AwsomeArni, Sat May 5 16:51:57 2012 +0200:Removed ghost/dead classes
+b1ef5db- AwsomeArni, Sat May 5 16:46:06 2012 +0200:Added SQLManager, made TablePanel working, fixed scrollbars
+b751295- AwsomeArni, Sat May 5 12:55:08 2012 +0200:Created working SQL Executing window
+9df986d- AwsomeArni, Wed May 2 18:38:56 2012 +0200:Did some minor fixes
+2b0264c- AwsomeArni, Wed May 2 18:27:17 2012 +0200:Created working tab-System
+1df0106- AwsomeArni, Tue May 1 16:05:00 2012 +0200:Removed outdated classes and replaced with the new correct ones
+a0a7abb- AwsomeArni, Tue May 1 15:06:26 2012 +0200:Merge branch 'master' of github.com:AwsomeArni/DBinABox
+d4c0aa9- AwsomeArni, Tue May 1 15:05:02 2012 +0200:Created all new view classes
+6e7644c- unknown, Tue May 1 14:40:25 2012 +0200:TabManager added
+e2f866b- AwsomeArni, Tue May 1 11:31:33 2012 +0200:Updated all files
+3f3d5c3- AwsomeArni, Thu Apr 26 10:58:53 2012 +0200:Log added
+963d357- AwsomeArni, Fri Mar 23 19:21:49 2012 +0100:Added javadoc to all current methods in view package
+8b37f48- AwsomeArni, Fri Mar 23 18:47:30 2012 +0100:Merge branch 'master' of github.com:AwsomeArni/DBinABox
+d205b15- AwsomeArni, Fri Mar 23 18:45:42 2012 +0100:Added several more classes. Created working skeletal MainFrame
+a7ff487- unknown, Thu Mar 22 21:41:15 2012 +0100:Login created and working (hardcoded db)
+8c3dd2b- AwsomeArni, Thu Mar 22 16:19:26 2012 +0100:Minor fixes, added HistorikPanel
+b818bed- AwsomeArni, Thu Mar 22 16:04:36 2012 +0100:LoginPanel created and working
+f886d82- unknown, Thu Mar 15 15:41:00 2012 +0100:Basis struktur
+9c3c6f7- AwsomeArni, Thu Mar 15 15:29:45 2012 +0100:Readme

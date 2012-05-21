@@ -17,7 +17,13 @@ public class TablePanel extends JPanel
     {
         setLayout(null);
         this.setBounds(0, 0, 600, 455);
-        table = new JTable();
+        table = new JTable(){
+            private static final long serialVersionUID = -1776467914450089355L;
+
+            public boolean isCellEditable(int rowIndex, int vColIndex) {
+                return false;
+            }
+        };
         table.setModel(new DefaultTableModel(tables, new String[] {"Tables"}));
         
         JScrollPane pane = new JScrollPane(this.table);

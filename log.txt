@@ -1,48 +1,366 @@
-commit 963d3575545b2bb5ac55804d987ee5a518c67f78
+commit 44eaf61f2f8bcbaed817e18a21a24f91f5e600d6
+
+Author: unknown <Peter@Peter-Laptop.(none)>
+
+Date:   Thu May 10 13:03:18 2012 +0200
+
+    
+	Small changes
+
+
+
+commit d87be234b511b235eb91759da61235460ac668a6
+
+Merge: 1261a4f 2d8c5ed
+
+Author: unknown <Peter@Peter-Laptop.(none)>
+
+Date:   Mon May 7 15:42:19 2012 +0200
+
+    
+	Merge branch 'master' of github.com:AwsomeArni/DBinABox
+
+
+
+commit 2d8c5ed9cf3b9a79a9630acbf923e7ade272a3f6
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Mon May 7 15:41:58 2012 +0200
+
+    
+	Added mysql supportability
+
+
+
+commit 4573d466510e5381574511173f2a69a2e01ce37a
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Mon May 7 13:43:04 2012 +0200
+
+    
+	Created working historikbutton
+
+
+
+commit 1261a4f31621f2e6a0217ddffb39ca4d4f562da8
+
+Merge: 622808c 7689d3e
+
+Author: unknown <Peter@Peter-Laptop.(none)>
+
+Date:   Mon May 7 12:20:25 2012 +0200
+
+    
+	Merge branch 'master' of github.com:AwsomeArni/DBinABox
+
+
+
+commit 7689d3e7bbfcb6a7f341d3e50bb66935b02f01db
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Mon May 7 11:43:23 2012 +0200
+
+    
+	Fixed an issue when closing the last tab, and moved login-sql to SQLManager
+
+
+
+commit 76c061df42f8880aabef2e18040d717808e4701d
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 23:35:24 2012 +0200
+
+    
+	Minor update: Dataview now shows the name of the opened table
+
+
+
+commit af751183abff9c811bf3b6abb5b3e9120ed60b16
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 23:23:41 2012 +0200
+
+    
+	Fixed an issue in getAllData when the table had no tuples
+
+
+
+commit 9f5024752d1ff4e69ec677cf9ba6ae36a9259841
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 23:15:48 2012 +0200
+
+    
+	Added the functionality of going back from dataview
+
+
+
+commit 9994478bb5734c1e8aac21074ace5ed6a355bf53
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 19:57:50 2012 +0200
+
+    
+	Now Open opens the user selected table
+
+
+
+commit 8d31761e6f0eb2b3cd2d9d5a1c3b1544f1f2ea90
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 16:52:15 2012 +0200
+
+    
+	Made it so the user must input correct port (and url)
+
+
+
+commit cdaf0034a3b801bd23eda28d8e0375bba85431ca
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 13:09:37 2012 +0200
+
+    
+	Made the connection from ExecuteSQLDialog to SQLManager, allowing the user to execute sql
+
+
+
+commit c1f0765865024f587a13ca4f6f3dd7c75d0da61b
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sun May 6 12:51:45 2012 +0200
+
+    
+	Made dataviewpanel class fully functional and working
+
+
+
+commit 376313ed4978c8d162f9b1c39b2f19ad3b726ea5
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sat May 5 16:51:57 2012 +0200
+
+    
+	Removed ghost/dead classes
+
+commit b1ef5db3d2ccbb34aecc5a07d59a7262b351aea3
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sat May 5 16:46:06 2012 +0200
+
+    
+	Added SQLManager, made TablePanel working, fixed scrollbars
+
+
+
+commit b751295c3cc55f6d988d08ee226a2c6d1bfc0c16
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Sat May 5 12:55:08 2012 +0200
+
+    
+	Created working SQL Executing window
+
+
+
+commit 9df986d2ecff4c25ec1c5e2fc584d905b07753d8
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Wed May 2 18:38:56 2012 +0200
+
+    
+	Did some minor fixes
+
+
+
+commit 2b0264c3d4b12e0e62fc25c8b0794506ef2af839
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Wed May 2 18:27:17 2012 +0200
+
+    
+	Created working tab-System
+
+
+
+commit 1df0106f4ef2ce52c25c4206fe6f00ca8caf27ab
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Tue May 1 16:05:00 2012 +0200
+
+    
+	Removed outdated classes and replaced with the new correct ones
+
+
+
+commit a0a7abb71d413775f1fcecb329f61347ae0454aa
+
+Merge: d4c0aa9 6e7644c
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Tue May 1 15:06:26 2012 +0200
+
+    
+	Merge branch 'master' of github.com:AwsomeArni/DBinABox
+
+
+
+commit d4c0aa96368c06ce15c1255d86cf87a0df161003
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Tue May 1 15:05:02 2012 +0200
+
+    
+	Created all new view classes
+
+
+
+commit 622808cc51c13ea50e0fdef380b17b3ce30c5c3b
+
+Author: unknown <Peter@Peter-Laptop.(none)>
+
+Date:   Tue May 1 14:44:31 2012 +0200
+
+    
+	Old code removed
+
+
+
+commit 6e7644c966c3b5a2591c914d97142a8fd7426c4d
+
+Author: unknown <Peter@Peter-Laptop.(none)>
+
+Date:   Tue May 1 14:40:25 2012 +0200
+
+    
+	TabManager added
+
+
+
+commit e2f866bcc4266bfcafe31c9744d7f3bfd9a4bee6
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Tue May 1 11:31:33 2012 +0200
+
+    
+	Updated all files
+
+
+
+commit 3f3d5c3e0cfb0a166bea2ed3fc5b960a085954de
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
+Date:   Thu Apr 26 10:58:53 2012 +0200
+
+    
+	Log added
+
+
+
+commit 963d3575545b2bb5ac55804d987ee5a518c67f78
+
+Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Fri Mar 23 19:21:49 2012 +0100
 
-    Added javadoc to all current methods in view package
+    
+	Added javadoc to all current methods in view package
+
+
 
 commit 8b37f4818409e5b0c7674b9262f93bd3b2f73ae2
+
 Merge: d205b15 a7ff487
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Fri Mar 23 18:47:30 2012 +0100
 
-    Merge branch 'master' of github.com:AwsomeArni/DBinABox
+    
+	Merge branch 'master' of github.com:AwsomeArni/DBinABox
+
+
 
 commit d205b15692bd16940f1bc78291a20edda1e80e04
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Fri Mar 23 18:45:42 2012 +0100
 
-    Added several more classes. Created working skeletal MainFrame
+    
+	Added several more classes. Created working skeletal MainFrame
+
+
 
 commit a7ff4878eb3086c467e7e9009566646419b47524
+
 Author: unknown <Peter@Peter-PC.(none)>
+
 Date:   Thu Mar 22 21:41:15 2012 +0100
 
-    Login created and working (hardcoded db)
+    
+	Login created and working (hardcoded db)
+
+
 
 commit 8c3dd2b2922f3683211a18816e4291d51cf6bed6
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Thu Mar 22 16:19:26 2012 +0100
 
-    Minor fixes, added HistorikPanel
+    
+
+	Minor fixes, added HistorikPanel
+
+
 
 commit b818bed430bf2b5e50df3bdfbd7211ec4068354f
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Thu Mar 22 16:04:36 2012 +0100
 
-    LoginPanel created and working
+    
+	LoginPanel created and working
+
+
 
 commit f886d823358a1ff4368940460af9fcf501cbde83
+
 Author: unknown <Peter@Peter-Laptop.(none)>
+
 Date:   Thu Mar 15 15:41:00 2012 +0100
 
-    Basis struktur
+    
+	Basis struktur
+
+
 
 commit 9c3c6f73ac22f2c8d8c3728a960fa3b532ba8d54
+
 Author: AwsomeArni <Arnidat@gmail.com>
+
 Date:   Thu Mar 15 15:29:45 2012 +0100
 
-    Readme
+    
+	Readme
