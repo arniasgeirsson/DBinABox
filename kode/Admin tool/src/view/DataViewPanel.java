@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -22,7 +24,13 @@ public class DataViewPanel extends JPanel
         lblAllDataOf.setBounds(0, 0, 600, 30);
         add(lblAllDataOf);
         
-        table = new JTable();
+        table = new JTable(){
+            private static final long serialVersionUID = 4187721687527079795L;
+
+            public boolean isCellEditable(int rowIndex, int vColIndex) {
+                return false;
+            }
+        };
         table.setModel(new DefaultTableModel(allData, attributes));
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
