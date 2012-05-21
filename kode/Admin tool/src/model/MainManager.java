@@ -2,9 +2,12 @@ package model;
 
 import java.awt.EventQueue;
 
+import javax.swing.JFrame;
+
 public class MainManager
 {
     private view.LoginFrame currentLoginFrame;
+    private boolean wrongLogin;
     
     private static MainManager instance;
     
@@ -28,6 +31,11 @@ public class MainManager
     {
         view.LoginFrame loginFrame = new view.LoginFrame();
         loginFrame.setVisible(true);
+        if (TabManager.getInstance().getActiveTabIndex() == -1)
+            loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        else 
+            loginFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
         this.currentLoginFrame = loginFrame;
     }
     
@@ -41,7 +49,7 @@ public class MainManager
     
     public void wrongLogin()
     {
-        
+        this.currentLoginFrame.setWrongLoginInfo("Error - wrong login");
     }
     
     /**

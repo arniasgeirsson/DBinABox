@@ -19,6 +19,7 @@ public class LoginFrame extends JFrame
     private JTextField username;
     private JTextField port;
     private JTextField url;
+    private JLabel lblWrongLoginInfo;
     
     /**
      * Create the frame.
@@ -27,7 +28,6 @@ public class LoginFrame extends JFrame
     {
         setResizable(false);
         setTitle("Login");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -79,7 +79,7 @@ public class LoginFrame extends JFrame
         url.setColumns(10);
         contentPane.add(url);
         
-        JLabel lblWrongLoginInfo = new JLabel("Wrong login info");
+        this.lblWrongLoginInfo = new JLabel("");
         lblWrongLoginInfo.setHorizontalAlignment(SwingConstants.CENTER);
         lblWrongLoginInfo.setBounds(161, 178, 235, 23);
         contentPane.add(lblWrongLoginInfo);
@@ -101,5 +101,10 @@ public class LoginFrame extends JFrame
     public String getURL()
     {
         return this.url.getText();
+    }
+    
+    public void setWrongLoginInfo(String error)
+    {
+        this.lblWrongLoginInfo.setText(error);
     }
 }

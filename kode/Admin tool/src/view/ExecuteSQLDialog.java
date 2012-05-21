@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class ExecuteSQLDialog extends JDialog
 {
@@ -32,9 +33,14 @@ public class ExecuteSQLDialog extends JDialog
             contentPanel.add(lblNewLabel);
         }
         
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(10, 22, 414, 196);
+        
         this.sqlStatement = new JTextArea();
         sqlStatement.setBounds(10, 22, 414, 196);
-        contentPanel.add(sqlStatement);
+        scrollPane.getViewport().add(sqlStatement);
+        contentPanel.add(scrollPane);
+
         {
             JPanel buttonPane = new JPanel();
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

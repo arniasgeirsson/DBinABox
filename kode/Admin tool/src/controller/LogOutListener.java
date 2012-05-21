@@ -10,10 +10,16 @@ public class LogOutListener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         view.MainFrame mainFrame = view.MainFrame.getInstance();
-        mainFrame.removeTab(model.TabManager.getInstance().getActiveTabIndex());
+        model.TabManager tabManager = model.TabManager.getInstance();
+        mainFrame.removeTab(tabManager.getActiveTabIndex());
         
-        model.TabManager.getInstance().removeActiveTab();
-        mainFrame.updateWindowPanel();
+        tabManager.removeActiveTab();
+        if (tabManager.getActiveTabIndex() >= 0)
+            mainFrame.updateWindowPanel();
+        else {
+            mainFrame.setVisible(false);
+            model.MainManager.getInstance().newLogin();
+        }
     }
 
 }
