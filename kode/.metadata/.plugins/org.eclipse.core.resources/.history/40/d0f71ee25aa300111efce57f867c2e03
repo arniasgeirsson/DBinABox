@@ -11,7 +11,7 @@ public class TabPanel extends JPanel
     private JButton btnNewTabButton;
     
     private int heightOfTabs = 40;
-    private int maxWidthOfTabs = 150;
+    private int maxWidthOfTabs = 80;
     private int minWidthOfTabs = 10;
     private int currentWidthOfTabs;
     
@@ -61,7 +61,6 @@ public class TabPanel extends JPanel
         this.updateAllTabs();
         
         JButton newTabButton = new JButton(name);
-        newTabButton.setToolTipText(name);
         newTabButton.setBounds(((this.numberOfTabs-1)*this.currentWidthOfTabs), 0, this.currentWidthOfTabs, this.heightOfTabs);
         newTabButton.addActionListener(new controller.TabListener());
         
