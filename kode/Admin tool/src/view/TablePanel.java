@@ -27,7 +27,7 @@ public class TablePanel extends JPanel
         table.setModel(new DefaultTableModel(tables, new String[] {"Tables"}));
         
         JScrollPane pane = new JScrollPane(this.table);
-        pane.setBounds(0, 30, 600, 405);
+        pane.setBounds(0, 30, 600, 425);
 
         add(pane);
         JLabel lblNewLabel = new JLabel("List of all Tables (attributes)");
@@ -39,7 +39,10 @@ public class TablePanel extends JPanel
     {
         int row = this.table.getSelectionModel().getLeadSelectionIndex();
         int column = this.table.getColumnModel().getSelectionModel().getLeadSelectionIndex();
-        return (String) this.table.getModel().getValueAt(row, column);
+        if (row >= 0 && column >= 0)
+            return (String) this.table.getModel().getValueAt(row, column);
+        else
+            return null;
     }
     
 }

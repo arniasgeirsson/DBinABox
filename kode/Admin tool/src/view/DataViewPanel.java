@@ -35,7 +35,7 @@ public class DataViewPanel extends JPanel
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         JScrollPane pane = new JScrollPane(this.table);
-        pane.setBounds(0, 30, 600, 405);
+        pane.setBounds(0, 30, 600, 425);
 
         this.add(pane);
         

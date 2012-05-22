@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 /**
  * The SQLManager class works as an manager for all the sql statements and database
  * connections that needs to be handled.
@@ -47,6 +49,7 @@ public class SQLManager
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
+            
             /*
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
@@ -54,10 +57,17 @@ public class SQLManager
             return conn;
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
+            
+            String g = "yyyy-MM-dd HH:mm:ss";
+
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat(g);
+            System.out.println(sdf.format(cal.getTime()));
+              
             System.out.println(e);
         } catch(ClassNotFoundException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
-            System.out.println(e);
+            e.printStackTrace();
         }
         
         return null;
@@ -122,7 +132,7 @@ public class SQLManager
 
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
-            System.out.println(e);
+            e.printStackTrace();
         }
         
         return null;        
@@ -191,7 +201,7 @@ public class SQLManager
     
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;        
     }
@@ -236,7 +246,7 @@ public class SQLManager
     
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -264,7 +274,7 @@ public class SQLManager
                 
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(e.getMessage());
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
     

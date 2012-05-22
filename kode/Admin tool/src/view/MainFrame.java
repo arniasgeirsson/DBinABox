@@ -188,7 +188,7 @@ public class MainFrame extends JFrame
     
     public String getSelectedTableName()
     {
-        TablePanel tablePanel =  (TablePanel) this.currentShowingPanel;
+        TablePanel tablePanel = (TablePanel) this.currentShowingPanel;
         return tablePanel.getSelectedTablename();
     }
     
