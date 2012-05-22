@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class MessageHandler
 {
-    private String newestMessage;
-    private ArrayList<String> allMessages;    
+    private Message newestMessage;
+    private ArrayList<Message> allMessages;    
     
     private static MessageHandler instance;
     
@@ -17,22 +17,22 @@ public class MessageHandler
     
     private MessageHandler()
     {
-        this.newestMessage = "";
-        this.allMessages = new ArrayList<String>();
+        this.newestMessage = new Message("", "", "", "");
+        this.allMessages = new ArrayList<Message>();
     }
     
-    public void addMessage(String newMessage)
+    public void addMessage(Message newMessage)
     {
         this.newestMessage = newMessage;
         this.allMessages.add(newMessage);
     }
     
-    public String getNewestMessage()
+    public Message getNewestMessage()
     {
         return this.newestMessage;
     }
     
-    public ArrayList<String> getAllMessage()
+    public ArrayList<Message> getAllMessage()
     {
         return this.allMessages;
     }

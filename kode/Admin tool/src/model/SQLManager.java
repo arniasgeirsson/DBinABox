@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 /**
  * The SQLManager class works as an manager for all the sql statements and database
  * connections that needs to be handled.
@@ -15,6 +16,10 @@ import java.util.Calendar;
 public class SQLManager
 {
     private static SQLManager instance;
+    private final static String DATE_FORMAT = "yyyy-MM-dd";
+    private final static String TIME_FORMAT = "HH:mm:ss";
+    private SimpleDateFormat sdfDate = new SimpleDateFormat(DATE_FORMAT);
+    private SimpleDateFormat sdfTime = new SimpleDateFormat(TIME_FORMAT);
 
     /**
      * Constructor, initiates a SQLManager object.
@@ -56,17 +61,12 @@ public class SQLManager
             */
             return conn;
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
-            
-            String g = "yyyy-MM-dd HH:mm:ss";
-
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat(g);
-            System.out.println(sdf.format(cal.getTime()));
-              
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage()));
             System.out.println(e);
         } catch(ClassNotFoundException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage()));
             e.printStackTrace();
         }
         
@@ -85,7 +85,9 @@ public class SQLManager
             conn.close();
         } catch (SQLException e)
         {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+//            Creator?
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), "None", e.getMessage()));
             e.printStackTrace();
         }
     }
@@ -131,7 +133,8 @@ public class SQLManager
             return tableNames;
 
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
         }
         
@@ -200,7 +203,8 @@ public class SQLManager
             return allData;
     
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
         }
         return null;        
@@ -245,7 +249,8 @@ public class SQLManager
             return tableNames;
     
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
         }
         return null;
@@ -269,11 +274,13 @@ public class SQLManager
             PreparedStatement stm = conn.prepareStatement(query);
             stm.executeQuery();
             conn.commit();
-            model.MessageHandler.getInstance().addMessage("SQL executed perfectly!");
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), "SQL executed perfectly!"));
             this.closeConnection(conn);
                 
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(e.getMessage());
+            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
         }
     }
@@ -291,7 +298,8 @@ public class SQLManager
         if (conn == null)
             return false;
         
-        model.MessageHandler.getInstance().addMessage("Login succesfull!");
+        model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), "Login succesfull!"));
         return true;
     }
 }

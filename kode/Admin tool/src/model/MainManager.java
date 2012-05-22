@@ -48,7 +48,7 @@ public class MainManager
     
     public void wrongLogin()
     {
-        this.currentLoginFrame.setWrongLoginInfo(model.MessageHandler.getInstance().getNewestMessage());
+        this.currentLoginFrame.setWrongLoginInfo(model.MessageHandler.getInstance().getNewestMessage().getMessage());
     }
     
     /**

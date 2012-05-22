@@ -133,7 +133,7 @@ public class MainFrame extends JFrame
             this.getContentPane().remove(this.btnOpenTable);
         }
         
-        this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage());
+        this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage().getMessage());
         
         this.validate();
         this.repaint();
