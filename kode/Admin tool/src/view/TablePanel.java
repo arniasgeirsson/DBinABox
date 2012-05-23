@@ -40,8 +40,11 @@ public class TablePanel extends JPanel
         int row = this.table.getSelectionModel().getLeadSelectionIndex();
         int column = this.table.getColumnModel().getSelectionModel().getLeadSelectionIndex();
         if (row >= 0 && column >= 0)
-            return (String) this.table.getModel().getValueAt(row, column);
-        else
+        {
+            String tableName = (String) this.table.getModel().getValueAt(row, column);
+            tableName = tableName.split(" ")[0];
+            return tableName;
+        } else
             return null;
     }
     

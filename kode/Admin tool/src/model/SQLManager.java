@@ -51,14 +51,15 @@ public class SQLManager
     {
         Connection conn;
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(
+//            Class.forName("oracle.jdbc.driver.OracleDriver");
+            
+            /*conn = DriverManager.getConnection(
                     "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
             
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "Arniermysql");
             */
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://jaeger-net.org.mysql/jaeger_net_org", "jaeger_net_org", "mGNaYgSY");
+            
             return conn;
         } catch(SQLException e) {
             e.printStackTrace();
@@ -113,7 +114,6 @@ public class SQLManager
             conn.setAutoCommit(false);
             
             String query = "SELECT TABLE_NAME FROM ALL_TABLES";
-//            String query = "show databases";
             PreparedStatement stm = conn.prepareStatement(query);
             
             ResultSet resultset = stm.executeQuery();
@@ -125,7 +125,46 @@ public class SQLManager
                 name = resultset.getString(1);
                 temp.add(name);
             }
-            
+            resultset.close();
+            /*ResultSet resultsetAttr;
+            System.out.println("1");
+            for (String tableTemp : temp)
+            {
+                System.out.println("2");
+
+                tableTemp = tableTemp.concat(" (");
+                
+                Connection connAttr = this.openConnection(tab.getLogin());
+
+                String queryForAttr = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
+                PreparedStatement statement = connAttr.prepareStatement(queryForAttr);
+                statement.setString(1, tableTemp);
+                resultsetAttr = statement.executeQuery();
+                System.out.println("3");
+
+                ArrayList<String> tempAttr = new ArrayList<String>();
+                while(resultsetAttr.next())
+                {
+                    tempAttr.add(resultsetAttr.getString(1));
+                }
+                
+                for (int i = 0; i < tempAttr.size(); i++)
+                {
+                    tableTemp = tableTemp.concat(tempAttr.get(i));
+                    if (i+1 < tempAttr.size())
+                        tableTemp = tableTemp.concat(", ");
+                }
+                    
+                tableTemp = tableTemp.concat(") ");
+                System.out.println("4");
+
+                resultsetAttr.close();
+                this.closeConnection(connAttr);
+                System.out.println("5");
+
+            }
+            System.out.println("6");*/
+
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)
             {
@@ -159,8 +198,6 @@ public class SQLManager
             return null;
         
         try {
-            conn.setAutoCommit(false);
-            
             String query = "SELECT * FROM "+tableName;
             PreparedStatement stm = conn.prepareStatement(query);
 //            stm.setString(1, tableName);
@@ -227,8 +264,6 @@ public class SQLManager
             return null;
         
         try {
-            conn.setAutoCommit(false);
-            
             String query = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
             PreparedStatement stm = conn.prepareStatement(query);
             stm.setString(1, tableName);
