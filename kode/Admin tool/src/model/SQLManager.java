@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+
 /**
  * The SQLManager class works as an manager for all the sql statements and database
  * connections that needs to be handled.
@@ -61,9 +61,8 @@ public class SQLManager
             */
             return conn;
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage()));
-            System.out.println(e);
+            e.printStackTrace();
+            this.sendMessage(login, e);
         } catch(ClassNotFoundException e) {
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage()));
@@ -85,10 +84,15 @@ public class SQLManager
             conn.close();
         } catch (SQLException e)
         {
+            e.printStackTrace();
+            String error = e.getMessage();
+            while((e = e.getNextException()) != null)
+            {
+                error = error.concat(e.getMessage());
+            }
 //            Creator?
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), "None", e.getMessage()));
-            e.printStackTrace();
+                    sdfTime.format(new Date()), "None", error));
         }
     }
     
@@ -131,9 +135,8 @@ public class SQLManager
             return tableNames;
 
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+            this.sendMessage(tab.getLogin(), e);
         } finally {
                 this.closeConnection(conn);
         }
@@ -201,9 +204,8 @@ public class SQLManager
             return allData;
     
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+            this.sendMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -247,9 +249,8 @@ public class SQLManager
             return tableNames;
     
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+            this.sendMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -276,11 +277,10 @@ public class SQLManager
             conn.commit();
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), "SQL executed perfectly!"));
-                
+            
         } catch(SQLException e) {
-            model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+            this.sendMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -302,5 +302,16 @@ public class SQLManager
         model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                 sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), "Login succesfull!"));
         return true;
+    }
+    
+    private void sendMessage(Login loginInfo, SQLException e)
+    {
+        String error = e.getMessage();
+        while((e = e.getNextException()) != null)
+        {
+            error = error.concat(e.getMessage());
+        }
+        model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
+                sdfTime.format(new Date()), loginInfo.getUsername() + " - " + loginInfo.getURL(), error));
     }
 }
