@@ -3,8 +3,7 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-import java.awt.Font;
-import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,6 +11,7 @@ import javax.swing.JTextArea;
 public class HistorikPanel extends JPanel
 {
 
+    private JScrollPane scrollPane;
     private int widthOfDateTimeArea;
     private int widthOfCreatorArea;
     private int widthOfTextArea;
@@ -27,14 +27,25 @@ public class HistorikPanel extends JPanel
         this.setBounds(0, 0, 600, 455);
         setLayout(null);
         
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(0, 30, 600, 425);
+        this.scrollPane = new JScrollPane();
+        this.scrollPane.setBounds(0, 30, 600, 425);
         
-        this.widthOfDateTimeArea = scrollPane.getWidth()/5;
+        this.widthOfDateTimeArea = this.scrollPane.getWidth()/5;
         this.widthOfCreatorArea = this.widthOfDateTimeArea;
-        this.widthOfTextArea = scrollPane.getWidth()-this.widthOfDateTimeArea-this.widthOfCreatorArea;
+        this.widthOfTextArea = this.scrollPane.getWidth()-this.widthOfDateTimeArea-this.widthOfCreatorArea;
         
-        JTextArea messageArea = new JTextArea();
+        JTextArea messageArea = new JTextArea(){
+            
+            @Override
+            public void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                g.drawLine(HistorikPanel.this.widthOfDateTimeArea, this.getY(), HistorikPanel.this.widthOfDateTimeArea, this.getHeight());
+                g.drawLine(HistorikPanel.this.widthOfDateTimeArea+HistorikPanel.this.widthOfCreatorArea, this.getY(),
+                        HistorikPanel.this.widthOfDateTimeArea+HistorikPanel.this.widthOfCreatorArea, this.getHeight());
+
+            }
+        };
         messageArea.setEditable(false);
         
         String messages = "";
@@ -59,57 +70,66 @@ public class HistorikPanel extends JPanel
         String time = message.getTime();
         String creator = message.getCreator();
         String text = message.getMessage();
+        text = text.replaceAll("\n", "");
+        
         boolean done = false;
         
         while (!done)
         {
             if (date.length() > 0)
             {
-                int endIndex = this.widthOfDateTimeArea/this.widthOfOneChar;
+                int endIndex = (this.widthOfDateTimeArea/this.widthOfOneChar)-1;
                 if (endIndex > date.length())
                 {
                     date = date + this.copyValueOf(" ", endIndex-date.length());
                 }
-                String temp = date.substring(0, endIndex);
+                String temp = date.substring(0, endIndex) + " ";
                 build = build.concat(temp);
                 date = date.substring(endIndex);
             }
             else if (time.length() > 0)
             {
-                int endIndex = this.widthOfDateTimeArea/this.widthOfOneChar;
+                int endIndex = (this.widthOfDateTimeArea/this.widthOfOneChar)-1;
                 if (endIndex > time.length())
                 {
                     time = time + this.copyValueOf(" ", endIndex-time.length());
                 }
-                String temp = time.substring(0, endIndex);
+                String temp = time.substring(0, endIndex) + " ";
                 build = build.concat(temp);
                 time = time.substring(endIndex);
+            } else {
+                build = build.concat(this.copyValueOf(" ", this.widthOfDateTimeArea/this.widthOfOneChar));
             }
+            
             if (creator.length() > 0)
             {
-                int endIndex = this.widthOfCreatorArea/this.widthOfOneChar;
+                int endIndex = (this.widthOfCreatorArea/this.widthOfOneChar)-1;
+                
                 if (endIndex > creator.length())
                 {
                     creator = creator + this.copyValueOf(" ", endIndex-creator.length());
                 }
-                String temp = creator.substring(0, endIndex);
+                String temp = creator.substring(0, endIndex) + " ";
                 build = build.concat(temp);
                 creator = creator.substring(endIndex);
+            } else {
+                build = build.concat(this.copyValueOf(" ", this.widthOfCreatorArea/this.widthOfOneChar));
             }
+            
             if (text.length() > 0)
             {
-                int endIndex = this.widthOfTextArea/this.widthOfOneChar;
+                int endIndex = (this.widthOfTextArea/this.widthOfOneChar)-1;
                 if (endIndex > text.length())
                 {
                     text = text + this.copyValueOf(" ", endIndex-text.length());
                 }
-                String temp = text.substring(0, endIndex);
+                String temp = text.substring(0, endIndex) + " ";
                 build = build.concat(temp);
                 text = text.substring(endIndex);
                 
-                build = build.concat("\n");
             }
-            
+            build = build.concat("\n");
+
             if (date.length() == 0 && time.length() == 0 && creator.length() == 0 && text.length() == 0)
                 done = true;
         }
