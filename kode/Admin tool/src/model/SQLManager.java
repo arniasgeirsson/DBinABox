@@ -122,8 +122,6 @@ public class SQLManager
                 temp.add(name);
             }
             
-            this.closeConnection(conn);
-            
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)
             {
@@ -136,6 +134,8 @@ public class SQLManager
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+        } finally {
+                this.closeConnection(conn);
         }
         
         return null;        
@@ -186,8 +186,6 @@ public class SQLManager
                 temp.add(temp2);
             }
             
-            this.closeConnection(conn);
-            
             if (temp.size() < 1)
                 return null;
             
@@ -206,6 +204,8 @@ public class SQLManager
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+        } finally {
+            this.closeConnection(conn);
         }
         return null;        
     }
@@ -238,8 +238,6 @@ public class SQLManager
                 temp.add(resultset.getString(1));
             }
             
-            this.closeConnection(conn);
-                
             String[] tableNames = new String[temp.size()];
             for (int i = 0; i < temp.size(); i++)
             {
@@ -252,6 +250,8 @@ public class SQLManager
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+        } finally {
+            this.closeConnection(conn);
         }
         return null;
     }
@@ -276,12 +276,13 @@ public class SQLManager
             conn.commit();
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), "SQL executed perfectly!"));
-            this.closeConnection(conn);
                 
         } catch(SQLException e) {
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
                     sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), e.getMessage()));
             e.printStackTrace();
+        } finally {
+            this.closeConnection(conn);
         }
     }
     
