@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JPanel;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -64,7 +65,7 @@ public class TabPanel extends JPanel
         newTabButton.setToolTipText(name);
         newTabButton.setBounds(((this.numberOfTabs-1)*this.currentWidthOfTabs), 0, this.currentWidthOfTabs, this.heightOfTabs);
         newTabButton.addActionListener(new controller.TabListener());
-        
+
         this.add(newTabButton);
         this.updateNewTabBtn();
         this.add(this.btnNewTabButton);

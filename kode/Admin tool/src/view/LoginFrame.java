@@ -83,6 +83,11 @@ public class LoginFrame extends JFrame
         lblWrongLoginInfo.setHorizontalAlignment(SwingConstants.LEFT);
         lblWrongLoginInfo.setBounds(40, 178, 356, 39);
         contentPane.add(lblWrongLoginInfo);
+        
+        JLabel lblNewLabel = new JLabel("Provide the necessary information to logon to a database.");
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setBounds(40, 17, 356, 14);
+        contentPane.add(lblNewLabel);
     }
     
     public String getPassword(){

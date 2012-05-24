@@ -51,14 +51,15 @@ public class SQLManager
     {
         Connection conn;
         try {
-//            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             
-            /*conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
-            
-            */
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://jaeger-net.org.mysql/jaeger_net_org", "jaeger_net_org", "mGNaYgSY");
+            conn = DriverManager.getConnection(
+//                    "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
+//                  "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort(), login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM", "CarharttDatabase");
+
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conn = DriverManager.getConnection("jdbc:mysql://jaeger-net.org.mysql/jaeger_net_org:3306", "jaeger_net_org", "mGNaYgSY");
             
             return conn;
         } catch(SQLException e) {
@@ -126,44 +127,46 @@ public class SQLManager
                 temp.add(name);
             }
             resultset.close();
-            /*ResultSet resultsetAttr;
-            System.out.println("1");
-            for (String tableTemp : temp)
+            ResultSet resultsetAttr;
+            Connection connAttr = this.openConnection(tab.getLogin());
+            String queryForAttr;
+            PreparedStatement statement;
+            int counter = 0;
+            for (int i = 0; i < temp.size(); i++)
             {
-                System.out.println("2");
-
-                tableTemp = tableTemp.concat(" (");
+                String tableTemp = temp.get(i);
                 
-                Connection connAttr = this.openConnection(tab.getLogin());
-
-                String queryForAttr = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
-                PreparedStatement statement = connAttr.prepareStatement(queryForAttr);
+                queryForAttr = "SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = ?";
+                statement = connAttr.prepareStatement(queryForAttr);
                 statement.setString(1, tableTemp);
                 resultsetAttr = statement.executeQuery();
-                System.out.println("3");
 
                 ArrayList<String> tempAttr = new ArrayList<String>();
                 while(resultsetAttr.next())
                 {
+                    System.out.println("Sker det?");
                     tempAttr.add(resultsetAttr.getString(1));
                 }
-                
-                for (int i = 0; i < tempAttr.size(); i++)
+
+                tableTemp = tableTemp.concat(" (");
+
+                for (int j = 0; j < tempAttr.size(); j++)
                 {
-                    tableTemp = tableTemp.concat(tempAttr.get(i));
-                    if (i+1 < tempAttr.size())
+                    System.out.println("Sker det?");
+                    tableTemp = tableTemp.concat(tempAttr.get(j));
+                    if (j+1 < tempAttr.size())
                         tableTemp = tableTemp.concat(", ");
                 }
                     
                 tableTemp = tableTemp.concat(") ");
-                System.out.println("4");
-
+                temp.set(i, tableTemp);
+                statement.close();
                 resultsetAttr.close();
-                this.closeConnection(connAttr);
-                System.out.println("5");
-
+                counter++;
+                System.out.println(counter);
             }
-            System.out.println("6");*/
+            this.closeConnection(connAttr);
+            System.out.println("6");
 
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)

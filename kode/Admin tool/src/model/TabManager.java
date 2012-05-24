@@ -25,11 +25,12 @@ public class TabManager
         
         if(login.tryLogin(username, password, port, url)){
             this.allTabs.add(new Tab(login));
-            this.activeTab++;
-            
+            if (this.activeTab >= 0)
+                this.activeTab = view.MainFrame.getInstance().getTabPanel().getNumberOfTabs();
+            else 
+                this.activeTab = 0;
             return true;
         }
-        
         return false;
     }
     

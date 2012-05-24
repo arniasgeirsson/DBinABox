@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -42,7 +45,43 @@ public class MainFrame extends JFrame
         setTitle("DB in a box - Admin Tool");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 600);
-        contentPane = new JPanel();
+        contentPane = new JPanel(){    
+            @Override
+            public void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setStroke(new BasicStroke(4));
+                g2.setColor(new Color(176, 176, 245));
+//                g2.setColor(new Color(31, 127, 191));
+
+                int winX = windowPanel.getX();
+                int winY = windowPanel.getY();
+                int winWidth = windowPanel.getWidth();
+                int winHeight = windowPanel.getHeight();
+                
+                if (MainFrame.getInstance().isHistorikActive)
+                {
+//                    Horizontal l r
+                    g2.drawLine(winX-3, winY-3, winX-3, txtHistorikLine.getY()+txtHistorikLine.getHeight()+3);
+                    g2.drawLine(winX+3+winWidth, winY-3, winX+3+winWidth, txtHistorikLine.getY()+txtHistorikLine.getHeight()+3);
+    
+//                    Vertical t b
+                    g2.drawLine(winX, winY-3, winX+winWidth, winY-3);
+                    g2.drawLine(winX, txtHistorikLine.getY()+txtHistorikLine.getHeight()+3, winX+winWidth, txtHistorikLine.getY()+txtHistorikLine.getHeight()+3);
+    
+                } else {
+//                  Horizontal l r
+                    g2.drawLine(winX-3, tabPanel.getY()+tabPanel.getHeight()+2, winX-3, winY+winHeight+3);
+                    g2.drawLine(winX+3+winWidth, tabPanel.getY()+tabPanel.getHeight()+2, winX+3+winWidth, winY+winHeight+3);
+                    
+//                  Vertical t b
+                    g2.drawLine(winX, tabPanel.getY()+tabPanel.getHeight()+2, winX+winWidth, tabPanel.getY()+tabPanel.getHeight()+2);
+                    g2.drawLine(winX, winY+3+winHeight, winX+winWidth, winY+3+winHeight);
+                }
+                
+                g2.setStroke(new BasicStroke(1));
+            }};
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -134,7 +173,7 @@ public class MainFrame extends JFrame
         }
         
         this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage().getMessage());
-        
+        this.giveActiveTabColor();
         this.validate();
         this.repaint();
     }
@@ -159,6 +198,7 @@ public class MainFrame extends JFrame
         this.windowPanel.add(new HistorikPanel(model.MessageHandler.getInstance().getAllMessage()));
         this.isHistorikActive = true;
         this.btnHistorik.setText("D");
+        this.removeActiveTabColor();
         this.validate();
         this.repaint();
     }
@@ -195,5 +235,26 @@ public class MainFrame extends JFrame
     public boolean isHistorikActive()
     {
         return this.isHistorikActive;
+    }
+    
+    public void giveActiveTabColor()
+    {
+        model.TabManager tabManager = model.TabManager.getInstance();
+        int activeIndex = tabManager.getActiveTabIndex();
+        
+        for (int i = 0; i < this.tabPanel.getNumberOfTabs(); i++)
+        {
+            this.tabPanel.getTabButtonAt(i).setBackground(null);
+            if (i == activeIndex)
+                this.tabPanel.getTabButtonAt(i).setBackground(new Color(176, 176, 245));
+        }
+    }
+    
+    public void removeActiveTabColor()
+    {
+        for (int i = 0; i < this.tabPanel.getNumberOfTabs(); i++)
+        {
+            this.tabPanel.getTabButtonAt(i).setBackground(null);
+        }
     }
 }
