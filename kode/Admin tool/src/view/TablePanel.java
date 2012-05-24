@@ -25,7 +25,7 @@ public class TablePanel extends JPanel
             }
         };
         table.setModel(new DefaultTableModel(tables, new String[] {"Tables"}));
-        
+        this.table.addMouseListener(new controller.DoubleClickInTableListener());
         JScrollPane pane = new JScrollPane(this.table);
         pane.setBounds(0, 30, 600, 425);
 

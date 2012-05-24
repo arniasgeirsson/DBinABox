@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.Color;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -33,8 +31,10 @@ public class DataViewPanel extends JPanel
         };
         table.setModel(new DefaultTableModel(allData, attributes));
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
+        this.table.addMouseListener(new controller.DoubleClickInDataListener());
         JScrollPane pane = new JScrollPane(this.table);
+        pane.addMouseListener(new controller.DoubleClickInDataListener());
+
         pane.setBounds(0, 30, 600, 425);
 
         this.add(pane);

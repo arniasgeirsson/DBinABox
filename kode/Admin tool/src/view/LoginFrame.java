@@ -35,8 +35,8 @@ public class LoginFrame extends JFrame
         this.setBackground(Color.white);
         contentPane.setLayout(null);
         
-        JButton btnLogin = new JButton("Login");
-        btnLogin.setBounds(319, 228, 89, 23);
+        JButton btnLogin = new JButton("Open Database");
+        btnLogin.setBounds(295, 221, 113, 30);
         contentPane.add(btnLogin);
         btnLogin.addActionListener(new controller.LoginListener());
         

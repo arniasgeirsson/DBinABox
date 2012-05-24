@@ -129,7 +129,7 @@ public class MainFrame extends JFrame
         this.windowPanel.setLayout(null);
         contentPane.add(windowPanel);
         
-        JButton btnLogOut = new JButton("Log out");
+        JButton btnLogOut = new JButton("Close Database");
         btnLogOut.setBounds(624, 234, 120, 40);
         btnLogOut.addActionListener(new controller.LogOutListener());
         contentPane.add(btnLogOut);
@@ -257,4 +257,5 @@ public class MainFrame extends JFrame
             this.tabPanel.getTabButtonAt(i).setBackground(null);
         }
     }
+    
 }
