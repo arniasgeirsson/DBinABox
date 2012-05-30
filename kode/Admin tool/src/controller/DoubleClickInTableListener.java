@@ -11,7 +11,6 @@ public class DoubleClickInTableListener implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        System.out.println(e.getClickCount());
         if (e.getClickCount() > 1)
         {
             view.MainFrame mainFrame = view.MainFrame.getInstance();

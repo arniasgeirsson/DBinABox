@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import model.Message.MessageStatus;
+
 /**
  * The SQLManager class works as an manager for all the sql statements and database
  * connections that needs to be handled.
@@ -54,9 +56,9 @@ public class SQLManager
             Class.forName("oracle.jdbc.driver.OracleDriver");
             
             conn = DriverManager.getConnection(
-//                    "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
+                    "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort()+":xe", login.getUsername(), login.getPassword());
 //                  "jdbc:oracle:thin:@" + login.getURL() + ":" + login.getPort(), login.getUsername(), login.getPassword());
-                    "jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM", "CarharttDatabase");
+//                    "jdbc:oracle:thin:@localhost:1521:xe", "SYSTEM", "CarharttDatabase");
 
 //            Class.forName("com.mysql.jdbc.Driver");
 //            conn = DriverManager.getConnection("jdbc:mysql://jaeger-net.org.mysql/jaeger_net_org:3306", "jaeger_net_org", "mGNaYgSY");
@@ -64,10 +66,10 @@ public class SQLManager
             return conn;
         } catch(SQLException e) {
             e.printStackTrace();
-            this.sendMessage(login, e);
+            this.sendBadMessage(login, e);
         } catch(ClassNotFoundException e) {
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage()));
+                    sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), e.getMessage(), MessageStatus.BAD));
             e.printStackTrace();
         }
         
@@ -94,7 +96,7 @@ public class SQLManager
             }
 //            Creator?
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), "None", error));
+                    sdfTime.format(new Date()), "None", error, MessageStatus.BAD));
         }
     }
     
@@ -131,7 +133,6 @@ public class SQLManager
             Connection connAttr = this.openConnection(tab.getLogin());
             String queryForAttr;
             PreparedStatement statement;
-            int counter = 0;
             for (int i = 0; i < temp.size(); i++)
             {
                 String tableTemp = temp.get(i);
@@ -144,7 +145,6 @@ public class SQLManager
                 ArrayList<String> tempAttr = new ArrayList<String>();
                 while(resultsetAttr.next())
                 {
-                    System.out.println("Sker det?");
                     tempAttr.add(resultsetAttr.getString(1));
                 }
 
@@ -152,7 +152,6 @@ public class SQLManager
 
                 for (int j = 0; j < tempAttr.size(); j++)
                 {
-                    System.out.println("Sker det?");
                     tableTemp = tableTemp.concat(tempAttr.get(j));
                     if (j+1 < tempAttr.size())
                         tableTemp = tableTemp.concat(", ");
@@ -162,11 +161,8 @@ public class SQLManager
                 temp.set(i, tableTemp);
                 statement.close();
                 resultsetAttr.close();
-                counter++;
-                System.out.println(counter);
             }
             this.closeConnection(connAttr);
-            System.out.println("6");
 
             String[][] tableNames = new String[temp.size()][1];
             for (int i = 0; i < temp.size(); i++)
@@ -178,7 +174,7 @@ public class SQLManager
 
         } catch(SQLException e) {
             e.printStackTrace();
-            this.sendMessage(tab.getLogin(), e);
+            this.sendBadMessage(tab.getLogin(), e);
         } finally {
                 this.closeConnection(conn);
         }
@@ -245,7 +241,7 @@ public class SQLManager
     
         } catch(SQLException e) {
             e.printStackTrace();
-            this.sendMessage(tab.getLogin(), e);
+            this.sendBadMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -288,7 +284,7 @@ public class SQLManager
     
         } catch(SQLException e) {
             e.printStackTrace();
-            this.sendMessage(tab.getLogin(), e);
+            this.sendBadMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -314,11 +310,12 @@ public class SQLManager
             stm.executeQuery();
             conn.commit();
             model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), "SQL executed perfectly!"));
+                    sdfTime.format(new Date()), tab.getLogin().getUsername() + " - " + tab.getLogin().getURL(), 
+                    "SQL executed perfectly!", MessageStatus.GOOD));
             
         } catch(SQLException e) {
             e.printStackTrace();
-            this.sendMessage(tab.getLogin(), e);
+            this.sendBadMessage(tab.getLogin(), e);
         } finally {
             this.closeConnection(conn);
         }
@@ -338,11 +335,11 @@ public class SQLManager
             return false;
         
         model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), "Login succesfull!"));
+                sdfTime.format(new Date()), login.getUsername() + " - " + login.getURL(), "Login succesfull!", MessageStatus.GOOD));
         return true;
     }
     
-    private void sendMessage(Login loginInfo, SQLException e)
+    private void sendBadMessage(Login loginInfo, SQLException e)
     {
         String error = e.getMessage();
         while((e = e.getNextException()) != null)
@@ -350,6 +347,6 @@ public class SQLManager
             error = error.concat(e.getMessage());
         }
         model.MessageHandler.getInstance().addMessage(new model.Message(sdfDate.format(new Date()), 
-                sdfTime.format(new Date()), loginInfo.getUsername() + " - " + loginInfo.getURL(), error));
+                sdfTime.format(new Date()), loginInfo.getUsername() + " - " + loginInfo.getURL(), error, MessageStatus.BAD));
     }
 }

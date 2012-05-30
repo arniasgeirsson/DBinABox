@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import model.Message.MessageStatus;
+
 public class MessageHandler
 {
     private Message newestMessage;
@@ -17,7 +19,7 @@ public class MessageHandler
     
     private MessageHandler()
     {
-        this.newestMessage = new Message("", "", "", "");
+        this.newestMessage = new Message("", "", "", "", MessageStatus.NEUTRAL);
         this.allMessages = new ArrayList<Message>();
     }
     
@@ -25,6 +27,7 @@ public class MessageHandler
     {
         this.newestMessage = newMessage;
         this.allMessages.add(newMessage);
+        controller.NewMessageListener.getInstance().newMessageAdded();
     }
     
     public Message getNewestMessage()

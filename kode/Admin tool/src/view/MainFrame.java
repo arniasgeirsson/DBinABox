@@ -4,7 +4,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +11,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
+
+import model.Message.MessageStatus;
 
 public class MainFrame extends JFrame
 {
@@ -104,7 +106,7 @@ public class MainFrame extends JFrame
         btnPushImage.setBounds(624, 183, 120, 40);
         contentPane.add(btnPushImage);
         
-        JLabel versionLabel = new JLabel("Admin Tool - Version 0.1");
+        JLabel versionLabel = new JLabel("Admin Tool - Version 2.0");
         versionLabel.setBounds(639, 537, 135, 14);
         contentPane.add(versionLabel);
         
@@ -113,10 +115,12 @@ public class MainFrame extends JFrame
         txtHistorikLine.setBounds(10, 527, 580, 24);
         contentPane.add(txtHistorikLine);
         txtHistorikLine.setColumns(10);
+        txtHistorikLine.setEditable(false);
+        txtHistorikLine.setBackground(Color.white);
         
         this.btnHistorik = new JButton("UP");
         btnHistorik.setBounds(589, 527, 20, 24);
-        this.btnHistorik.addActionListener(new controller.HistorikListener());
+        this.btnHistorik.addActionListener(new controller.HistorikBtnListener());
         contentPane.add(btnHistorik);
         
         this.tabPanel = new TabPanel();
@@ -135,7 +139,6 @@ public class MainFrame extends JFrame
         contentPane.add(btnLogOut);
         
         this.isHistorikActive = false;
-        this.updateWindowPanel();
     }
     
     public void addTab(String name)
@@ -172,10 +175,14 @@ public class MainFrame extends JFrame
             this.getContentPane().remove(this.btnOpenTable);
         }
         
-        this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage().getMessage());
         this.giveActiveTabColor();
         this.validate();
         this.repaint();
+    }
+    
+    public void updateMessage()
+    {
+        this.txtHistorikLine.setText("- " + model.MessageHandler.getInstance().getNewestMessage().getMessage());
     }
     
     public void switchTooTablePanel()
@@ -258,4 +265,8 @@ public class MainFrame extends JFrame
         }
     }
     
+    public JTextField getTxtHistorikLine()
+    {
+        return this.txtHistorikLine;
+    }
 }

@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HistorikListener implements ActionListener
+public class HistorikBtnListener implements ActionListener
 {
 
     @Override
